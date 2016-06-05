@@ -3,6 +3,7 @@ es-MX:
     models:
       match: Partido
       team: Equipo
+      user: Usuario
     attributes: &attributes
       match:
         home_team_id: Equipo Local
@@ -14,5 +15,8 @@ es-MX:
         when: Cuándo
       team:
         name: Nombre
+      user:
+        name: Nombre
+        email: Correo
   helpers:
     label: *attributes
