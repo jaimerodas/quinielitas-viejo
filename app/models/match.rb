@@ -7,6 +7,7 @@ class Match < ApplicationRecord
 
   # No pueden jugar dos partidos al mismo tiempo
   validate :teams_have_no_matches_at_that_time, on: :create
+  validate :teams_have_no_other_matches_at_that_time, on: :update
 
   private
 
@@ -15,18 +16,18 @@ class Match < ApplicationRecord
   end
 
   def teams_have_no_matches_at_that_time
-    local = self.class.where(
-      'home_team_id = ? or away_team_id = ? ',
-      home_team_id,
-      home_team_id
-    ).where(when: self.when)
-    visit = self.class.where(
-      'home_team_id = ? or away_team_id = ? ',
-      away_team_id,
-      away_team_id
-    ).where(when: self.when)
+    team_has_no_matches :home_team_id
+    team_has_no_matches :away_team_id
+  end
 
-    errors.add(:home_team_id, "ya tiene un juego en ese momento") if local.size > 0
-    errors.add(:away_team_id, "ya tiene un juego en ese momento") if visit.size > 0
+  def teams_have_no_other_matches_at_that_time
+    team_has_no_matches :home_team_id, id
+    team_has_no_matches :away_team_id, id
+  end
+
+  def team_has_no_matches team, id=false
+    matches = self.class.where('home_team_id = ? or away_team_id = ? ', self.send(team), self.send(team)).where(when: self.when)
+    matches = matches.where('id != ?', id) if id
+    errors.add(team, "ya tiene un juego en ese momento") if matches.size > 0
   end
 end
