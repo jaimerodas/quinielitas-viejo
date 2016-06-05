@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :home_team_id %>
+    <%= f.collection_select( :home_team_id, Team.all.order(name: :asc), :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :away_team_id %>
+    <%= f.collection_select( :away_team_id, Team.all.order(name: :asc), :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= f.label :home %>
     <%= f.number_field :home %>
   </div>

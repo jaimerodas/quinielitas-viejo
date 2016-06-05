@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605020812) do
+ActiveRecord::Schema.define(version: 20160605022943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(version: 20160605020812) do
     t.integer  "home"
     t.integer  "away"
     t.datetime "when"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id", using: :btree
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id", using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
@@ -31,4 +35,6 @@ ActiveRecord::Schema.define(version: 20160605020812) do
     t.index ["name"], name: "index_teams_on_name", unique: true, using: :btree
   end
 
+  add_foreign_key "matches", "teams", column: "away_team_id"
+  add_foreign_key "matches", "teams", column: "home_team_id"
 end

@@ -5,9 +5,11 @@
 <table>
   <thead>
     <tr>
+      <th>When</th>
+      <th>Home Team</th>
+      <th>Away Team</th>
       <th>Home</th>
       <th>Away</th>
-      <th>When</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +17,11 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
+        <td><%= match.when %></td>
+        <td><%= match.home_team.name %></td>
+        <td><%= match.away_team.name %></td>
         <td><%= match.home %></td>
         <td><%= match.away %></td>
-        <td><%= match.when %></td>
         <td><%= link_to 'Show', match %></td>
         <td><%= link_to 'Edit', edit_match_path(match) %></td>
         <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>

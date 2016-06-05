@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
   # GET /matches
   # GET /matches.json
   def index
-    @matches = Match.all
+    @matches = Match.all.order(when: :asc)
   end
 
   # GET /matches/1
@@ -69,6 +69,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:home, :away, :when)
+      params.require(:match).permit(:home, :away, :when, :home_team_id, :away_team_id)
     end
 end
