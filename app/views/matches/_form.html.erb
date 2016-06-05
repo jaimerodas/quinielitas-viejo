@@ -1,0 +1,32 @@
+<%= form_for(match) do |f| %>
+  <% if match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :home %>
+    <%= f.number_field :home %>
+  </div>
+
+  <div class="field">
+    <%= f.label :away %>
+    <%= f.number_field :away %>
+  </div>
+
+  <div class="field">
+    <%= f.label :when %>
+    <%= f.datetime_select :when %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
