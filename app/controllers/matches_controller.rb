@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :set_teams, only: [:new, :create, :edit, :update]
 
   # GET /matches
   # GET /matches.json
@@ -28,7 +29,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.save
-        format.html { redirect_to @match, notice: 'Match was successfully created.' }
+        format.html { redirect_to matches_url, notice: 'Match was successfully created.' }
         format.json { render :show, status: :created, location: @match }
       else
         format.html { render :new }
@@ -65,6 +66,10 @@ class MatchesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_match
       @match = Match.find(params[:id])
+    end
+
+    def set_teams
+      @teams = Team.all.order(name: :asc)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
