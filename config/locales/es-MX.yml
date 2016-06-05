@@ -1,0 +1,18 @@
+es-MX:
+  activerecord:
+    models:
+      match: Partido
+      team: Equipo
+    attributes: &attributes
+      match:
+        home_team_id: Equipo Local
+        home_team: Equipo Local
+        away_team_id: Equipo Visitante
+        away_team: Equipo Visitante
+        home: Local
+        away: Visitante
+        when: Cuándo
+      team:
+        name: Nombre
+  helpers:
+    label: *attributes
