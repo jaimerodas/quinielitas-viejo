@@ -17,14 +17,18 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create match" do
     assert_difference('Match.count') do
-      post matches_url, params: { match: { away: @match.away, home: @match.home, when: @match.when } }
+      post matches_url, params: { match: {
+        home_team_id: 2,
+        away_team_id: 3,
+        when: Time.zone.now
+      } }
     end
 
-    assert_redirected_to match_path(Match.last)
+    assert_redirected_to matches_path
   end
 
   test "should show match" do
-    get match_url(@match)
+    get match_url(1)
     assert_response :success
   end
 
@@ -35,7 +39,7 @@ class MatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update match" do
     patch match_url(@match), params: { match: { away: @match.away, home: @match.home, when: @match.when } }
-    assert_redirected_to match_path(@match)
+    assert_response :success
   end
 
   test "should destroy match" do
