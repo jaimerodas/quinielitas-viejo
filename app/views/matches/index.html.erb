@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Matches</h1>
+<h1>Partidos</h1>
 
 <table>
   <thead>
     <tr>
-      <th>When</th>
-      <th>Home Team</th>
-      <th>Away Team</th>
-      <th>Home</th>
-      <th>Away</th>
+      <th>Cuándo</th>
+      <th>Equipo Local</th>
+      <th>Equipo Visitante</th>
+      <th>Local</th>
+      <th>Visitante</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,9 +22,9 @@
         <td><%= match.away_team.name %></td>
         <td><%= match.home %></td>
         <td><%= match.away %></td>
-        <td><%= link_to 'Show', match %></td>
-        <td><%= link_to 'Edit', edit_match_path(match) %></td>
-        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', match %></td>
+        <td><%= link_to 'Editar', edit_match_path(match) %></td>
+        <td><%= link_to 'Eliminar', match, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Match', new_match_path %>
+<%= link_to 'Nuevo Partido', new_match_path %>

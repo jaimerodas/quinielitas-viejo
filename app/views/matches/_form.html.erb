@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :home_team_id %>
+    <%= f.label :home_team_id, "Equipo Local" %>
     <%= f.collection_select :home_team_id, @teams, :id, :name %>
   </div>
 
   <div class="field">
-    <%= f.label :away_team_id %>
+    <%= f.label :away_team_id, "Equipo Visitante" %>
     <%= f.collection_select :away_team_id, @teams, :id, :name %>
   </div>
 
   <div class="field">
-    <%= f.label :home %>
+    <%= f.label :home, "Local" %>
     <%= f.number_field :home %>
   </div>
 
   <div class="field">
-    <%= f.label :away %>
+    <%= f.label :away, "Visitante" %>
     <%= f.number_field :away %>
   </div>
 
   <div class="field">
-    <%= f.label :when %>
+    <%= f.label :when, "Cuándo" %>
     <%= f.datetime_select :when, minute_step: 15, start_hour: 11, end_hour: 13, discard_year: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button "Crear Partido" %>
   </div>
 <% end %>
