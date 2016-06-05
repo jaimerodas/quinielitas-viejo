@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605202833) do
+ActiveRecord::Schema.define(version: 20160605203631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "match_id"
+    t.integer  "home"
+    t.integer  "away"
+    t.integer  "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_bets_on_match_id", using: :btree
+    t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
+  end
 
   create_table "matches", force: :cascade do |t|
     t.integer  "home"
@@ -43,6 +55,8 @@ ActiveRecord::Schema.define(version: 20160605202833) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "bets", "matches"
+  add_foreign_key "bets", "users"
   add_foreign_key "matches", "teams", column: "away_team_id"
   add_foreign_key "matches", "teams", column: "home_team_id"
 end

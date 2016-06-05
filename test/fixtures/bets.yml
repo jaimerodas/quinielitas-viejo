@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  match: one
+  home: 1
+  away: 1
+  points: 1
+
+two:
+  user: two
+  match: two
+  home: 1
+  away: 1
+  points: 1
