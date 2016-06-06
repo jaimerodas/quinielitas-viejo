@@ -5,6 +5,18 @@ class SessionsController < ApplicationController
     redirect_to root_path and return if logged_in?
   end
 
+  def create
+    redirect_to root_path and return if logged_in?
+
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      init_session_for user
+    else
+      flash.now[:danger] = "No encontramos esa combinación de correo y contraseña."
+      render 'new'
+    end
+  end
+
   def oauth
     redirect_to root_path and return if logged_in?
 
