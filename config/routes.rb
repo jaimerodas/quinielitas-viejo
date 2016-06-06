@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
   resources :matches
   resources :teams
-  resource :bets, except: [:destroy]
+  resource :bets, except: [:destroy, :new]
 end
