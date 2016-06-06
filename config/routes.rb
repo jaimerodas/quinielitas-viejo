@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'login', to: 'sessions#new'
+  get '/auth/:provider/callback', to: 'sessions#oauth'
+
+  root 'matches#index'
+
   resources :users
   resources :matches
   resources :teams
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
