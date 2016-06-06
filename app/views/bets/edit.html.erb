@@ -1,4 +1,24 @@
 <%= form_for :bets, url: bets_path, method: :patch do |b| %>
 
+  <% @bets.each do |b|  %>
+
+    <%= fields_for 'bets[]', b do |bet| %>
+    <div class="match">
+      <fieldset>
+        <div class="field">
+          <%= bet.label :home, b.match.home_team.name %>
+          <%= bet.number_field :home %>
+        </div>
+
+        <div class="field">
+          <%= bet.label :away, b.match.away_team.name %>
+          <%= bet.number_field :away %>
+        </div>
+      </fieldset>
+    </div>
+    <% end %>
+
+  <% end %>
+
   <%= b.button %>
 <% end %>
