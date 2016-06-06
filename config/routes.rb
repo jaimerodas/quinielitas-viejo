@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :match_pools do
     resources :matches
     resource :bets, except: [:destroy, :new]
-    resources :user, controller: 'bets', only: [:index, :show]
+    resources :users, controller: 'bets', only: [:index, :show]
   end
 
   resources :teams
