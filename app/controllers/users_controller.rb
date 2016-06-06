@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    redirect_to root_path and return if logged_in?
+
     @user = User.new
     render layout: 'session'
   end
@@ -26,6 +28,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    redirect_to root_path and return if logged_in?
+
     @user = User.new(user_params)
 
     respond_to do |format|
