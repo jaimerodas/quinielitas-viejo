@@ -9,7 +9,7 @@ class BetsController < ApplicationController
 
   def create
     if current_user.bets.empty?
-      @matches = Match.all
+      @matches = Match.all.order(when: :asc)
 
       @matches.each do |m|
         Bet.create(
@@ -27,5 +27,7 @@ class BetsController < ApplicationController
   end
 
   def update
+    @bets = Bet.update(params[:bets].keys, params[:bets].values)
+    render 'edit'
   end
 end
