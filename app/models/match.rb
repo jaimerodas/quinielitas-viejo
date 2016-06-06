@@ -9,6 +9,15 @@ class Match < ApplicationRecord
   validate :teams_have_no_matches_at_that_time, on: :create
   validate :teams_have_no_other_matches_at_that_time, on: :update
 
+
+  def date
+    I18n.l self.when, format: :short_date
+  end
+
+  def time
+    I18n.l self.when, format: :short_time
+  end
+
   private
 
   def has_different_teams

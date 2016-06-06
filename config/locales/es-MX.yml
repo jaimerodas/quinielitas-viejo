@@ -23,3 +23,7 @@ es-MX:
         password: Contraseña
   helpers:
     label: *attributes
+  time:
+    formats:
+      short_date: '%b %-d'
+      short_time: '%l:%M %P'
