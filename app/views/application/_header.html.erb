@@ -1,8 +1,14 @@
 <%= link_to 'Salir', logout_path %>
 
 <nav>
-  <%= link_to 'Resultados', root_path %>
+  <%= link_to 'Quinielas', match_pools_path %>
   <%= link_to 'Equipos', teams_path %>
-  <%= link_to 'Partidos', matches_path %>
   <%= link_to 'Usuarios', users_path %>
 </nav>
+
+<% if @match_pool %>
+<nav>
+  <%= link_to 'Partidos', match_pool_matches(@match_pool) %>
+  <%= link_to 'Apuestas', match_pool_users(@match_pool) %>
+</nav>
+<% end %>

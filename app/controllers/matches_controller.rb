@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   before_action :logged_in_user
 
+  before_action :set_match_pool
   before_action :set_match, only: [:show, :edit, :update, :destroy]
   before_action :set_teams, only: [:new, :create, :edit, :update]
 
@@ -27,7 +28,7 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
-    @match = Match.new(match_params)
+    @match = @match_pool_id.matches.new(match_params)
 
     respond_to do |format|
       if @match.save
@@ -68,6 +69,10 @@ class MatchesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_match
       @match = Match.find(params[:id])
+    end
+
+    def set_match_pool
+      @match_pool = MatchPool.find(params[:match_pool_id])
     end
 
     def set_teams

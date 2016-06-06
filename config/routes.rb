@@ -8,12 +8,16 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#oauth'
 
-  root 'bets#index'
+  root 'match_pools#index'
 
-  resources :users, except: [:new, :create] do
-    resource :bets, only: [:show]
+  resources :users, except: [:new, :create]
+
+  resources :match_pools do
+    resources :matches
+    resource :bets, except: [:destroy, :new]
+    resources :user, controller: 'bets', only: [:index, :show]
   end
-  resources :matches
+
   resources :teams
-  resource :bets, except: [:destroy, :new]
+
 end
