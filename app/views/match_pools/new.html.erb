@@ -1,2 +1,11 @@
-<h1>MatchPools#new</h1>
-<p>Find me in app/views/match_pools/new.html.erb</p>
+<h1>Crear Quiniela</h1>
+
+<%= form_for @match_pool do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.button %>
+<% end %>
