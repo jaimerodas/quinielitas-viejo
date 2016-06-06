@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

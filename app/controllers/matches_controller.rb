@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  before_action :logged_in_user
+
   before_action :set_match, only: [:show, :edit, :update, :destroy]
   before_action :set_teams, only: [:new, :create, :edit, :update]
 
