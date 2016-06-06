@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  bets_opened_at: 2016-06-06 12:42:51
+  bets_closed_at: 2016-06-06 12:42:51
+  results_given_at: 2016-06-06 12:42:51
+
+two:
+  name: MyString
+  bets_opened_at: 2016-06-06 12:42:51
+  bets_closed_at: 2016-06-06 12:42:51
+  results_given_at: 2016-06-06 12:42:51

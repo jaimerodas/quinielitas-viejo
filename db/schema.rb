@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606004723) do
+ActiveRecord::Schema.define(version: 20160606174251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20160606004723) do
     t.index ["match_id"], name: "index_bets_on_match_id", using: :btree
     t.index ["user_id", "match_id"], name: "index_bets_on_user_id_and_match_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
+  end
+
+  create_table "match_pools", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "bets_opened_at"
+    t.datetime "bets_closed_at"
+    t.datetime "results_given_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "matches", force: :cascade do |t|
