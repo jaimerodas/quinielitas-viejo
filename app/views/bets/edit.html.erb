@@ -1,2 +1,4 @@
-<h1>Bets#edit</h1>
-<p>Find me in app/views/bets/edit.html.erb</p>
+<%= form_for :bets, url: bets_path, method: :patch do |b| %>
+
+  <%= b.button %>
+<% end %>
