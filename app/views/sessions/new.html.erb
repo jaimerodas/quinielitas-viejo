@@ -1,1 +1,16 @@
-<a href="/auth/facebook">Entrar con facebook</a>
+<%= form_for :session do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.button 'Acceder' %>
+<% end %>
+
+<%= link_to 'Ingresa con Facebook', '/auth/facebook' %>
+<%= link_to 'Crea una cuenta', register_path %>

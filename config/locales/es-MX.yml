@@ -18,5 +18,8 @@ es-MX:
       user:
         name: Nombre
         email: Correo
+      session:
+        email: Correo
+        password: Contraseña
   helpers:
     label: *attributes
