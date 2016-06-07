@@ -8,11 +8,23 @@ class SessionsController < ApplicationController
   def create
     redirect_to root_path and return if logged_in?
 
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    user = User.find_by(email_token: params[:token])
+    if user
+      user.update_attribute(:email_token, nil)
       init_session_for user
     else
-      flash.now[:danger] = "No encontramos esa combinación de correo y contraseña."
+      flash.now[:danger] = "Esa liga no es válida"
+      render 'new'
+    end
+  end
+
+  def email
+    user = User.find_by(email: params[:session][:email].downcase)
+
+    if user
+      user.authenticate!
+    else
+      flash.now[:danger] = "No existe esa cuenta"
       render 'new'
     end
   end
