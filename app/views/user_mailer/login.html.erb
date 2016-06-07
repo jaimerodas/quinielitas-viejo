@@ -1,0 +1,12 @@
+<p>
+  Hola <strong><%= @user.name %></strong>! <br>
+  Para ingresar al sistema haz clic en la siguiente liga:
+</p>
+
+<p>
+  <%= link_to token_url(@user.email_token), token_url(@user.email_token) %>
+</p>
+
+<p>
+  (Esta liga sólo es válida una vez)
+</p>

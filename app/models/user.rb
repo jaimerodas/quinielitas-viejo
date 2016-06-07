@@ -20,6 +20,11 @@ class User < ApplicationRecord
     update_attribute :remember_digest, User.digest(remember_token)
   end
 
+  def authenticate
+    update_attribute(:email_token, ApplicationRecord::generate_unique_secure_token())
+    UserMailer.login(self).deliver_now
+  end
+
   def forget
     update_attribute :remember_digest, nil
   end

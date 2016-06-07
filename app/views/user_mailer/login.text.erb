@@ -1,0 +1,6 @@
+Hola <%= @user.name %>!
+Para ingresar al sistema, entra a la siguiente liga:
+
+<%= token_url(@user.email_token) %>
+
+(Esta liga sólo es válida una vez)

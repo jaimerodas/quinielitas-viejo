@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
+  post 'login', to: 'sessions#email'
   get 'logout', to: 'sessions#destroy'
+  get 'token/:token', to: 'sessions#create', as: 'token'
 
   get 'register', to: 'users#new'
   post 'register', to: 'users#create'
+
 
   get '/auth/:provider/callback', to: 'sessions#oauth'
 
