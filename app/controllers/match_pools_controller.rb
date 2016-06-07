@@ -1,6 +1,6 @@
 class MatchPoolsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_match_pool, on: [:show, :advance]
+  before_action :set_match_pool, only: [:show, :advance]
 
   def index
     @match_pools = MatchPool.all.order(created_at: :asc)
