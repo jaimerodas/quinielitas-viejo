@@ -1,6 +1,6 @@
 class MatchPoolsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_match_pool, on: [:show]
+  before_action :set_match_pool, on: [:show, :advance]
 
   def index
     @match_pools = MatchPool.all.order(created_at: :asc)
@@ -31,6 +31,16 @@ class MatchPoolsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def advance
+    if @match_pool.accepts_matches?
+      @match_pool.open_betting!
+    else
+      @match_pool.close_betting!
+    end
+
+    redirect_to @match_pool
   end
 
   private

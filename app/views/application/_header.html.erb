@@ -11,7 +11,9 @@
 <div class="status"><%= @match_pool.status %></div>
 
 <nav>
-  <%= link_to 'Partidos', match_pool_matches_path(@match_pool) %>
+  <% if @match_pool.accepts_matches? %>
+    <%= link_to 'Cerrar Partidos', advance_match_pool_path(@match_pool), data: { confirm: 'Estás seguro?' } %>
+  <% end %>
 
   <% if @match_pool.accepts_bets? %>
     <%= link_to 'Apuestas', match_pool_users_path(@match_pool) %>
