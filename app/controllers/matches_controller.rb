@@ -2,18 +2,14 @@ class MatchesController < ApplicationController
   before_action :logged_in_user
 
   before_action :set_match_pool
-  before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :only_if_open, only: [:destroy]
+  before_action :set_match, only: [:edit, :update, :destroy]
   before_action :set_teams, only: [:new, :create, :edit, :update]
 
   # GET /matches
   # GET /matches.json
   def index
     @matches = Match.all.order(when: :asc)
-  end
-
-  # GET /matches/1
-  # GET /matches/1.json
-  def show
   end
 
   # GET /matches/new
@@ -73,6 +69,14 @@ class MatchesController < ApplicationController
 
     def set_teams
       @teams = Team.all.order(name: :asc)
+    end
+
+    def only_if_open
+      unless @match_pool.accepts_matches?
+        flash[:danger] = "Acción no permitida"
+        redirect_to match_pool_path(@match_pool)
+        return
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

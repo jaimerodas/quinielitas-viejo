@@ -1,1 +1,8 @@
+
+<% if @match_pool.accepts_bets? %>
+<%= form_for :bets, url: match_pool_bets_path(@match_pool) do |f| %>
+  <%= f.button 'Editar Mis Apuestas' %>
+<% end %>
+<% end %>
+
 <%= render 'matches/all' %>
