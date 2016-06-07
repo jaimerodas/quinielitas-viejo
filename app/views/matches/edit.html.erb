@@ -2,5 +2,5 @@
 
 <%= render 'form', match: @match %>
 
-<%= link_to 'Mostrar', @match %> |
-<%= link_to 'Regresar', matches_path %>
+<%= link_to 'Mostrar', match_pool_match_path(@match_pool, @match) %> |
+<%= link_to 'Regresar', match_pool_matches_path(@match_pool) %>
