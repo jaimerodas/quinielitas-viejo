@@ -2,10 +2,7 @@
 
 <% @match_pools.each do |q| %>
 <div class="quiniela">
-  <h2><%= q.name %></h2>
-  <nav>
-    <%= link_to 'Ver', q %>
-  </nav>
+  <h2><%= link_to q.name, q %></h2>
 </div>
 <% end %>
 
