@@ -2,25 +2,30 @@
 
   <% @bets.each do |b|  %>
 
-    <%= fields_for 'bets[]', b do |bet| %>
-    <div class="match">
-      <fieldset>
-        <div class="field">
-          <%= bet.label :home, b.match.home_team.name %>
-          <%= bet.number_field :home %>
-        </div>
+  <table>
+    <tr>
+      <th colspan="2"></th>
+      <th></th>
+    </tr>
 
-        <div class="field">
-          <%= bet.label :away, b.match.away_team.name %>
-          <%= bet.number_field :away %>
-        </div>
-      </fieldset>
-      <div class="when">
+    <%= fields_for 'bets[]', b do |bet| %>
+    <tr>
+      <td rowspan="2">
         <span><%= b.match.date %></span>
         <span><%= b.match.time %></span>
-      </div>
-    </div>
+      </td>
+      <td><%= bet.label :home, b.match.home_team.name %></td>
+
+      <td><%= bet.number_field :home %></td>
+    </tr>
+
+    <tr>
+      <td><%= bet.label :away, b.match.away_team.name %></td>
+      <td><%= bet.number_field :away %></td>
+      <td></td>
+    </tr>
     <% end %>
+  </table>
 
   <% end %>
 
