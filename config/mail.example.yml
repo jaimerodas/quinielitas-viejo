@@ -1,0 +1,8 @@
+development: &keys
+  :address: smtp.mailgun.org
+  :port: 587
+  :domain: MAILGUN_DOMAIN
+  :user_name: MAILGUN_SMTP_LOGIN
+  :password: MAILGUN_SMTP_PASSWORD
+  :authentication: !ruby/sym plain
+production: *keys
