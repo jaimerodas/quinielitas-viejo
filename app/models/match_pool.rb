@@ -24,10 +24,10 @@ class MatchPool < ApplicationRecord
     end
   end
 
-  def status
-    return 'editando' if self.accepts_matches?
-    return 'apostando' if self.accepts_bets?
-    return 'jugando'
+  def next_action
+    return 'Abrir Apuestas' if self.accepts_matches?
+    return 'Cerrar Apuestas' if self.accepts_bets?
+    return 'Cerrar Quiniela'
   end
 
 end
