@@ -6,7 +6,9 @@
   <%= link_to 'Usuarios', users_path %>
 </nav>
 
-<% if params[:match_pool_id] %>
+<% if params[:match_pool_id] || @match_pool&.id %>
+<h1><%= link_to @match_pool.name, @match_pool %></h1>
+
 <nav>
   <%= link_to 'Partidos', match_pool_matches_path(@match_pool) %>
   <%= link_to 'Apuestas', match_pool_users_path(@match_pool) %>

@@ -2,6 +2,11 @@ class MatchPoolsController < ApplicationController
   before_action :logged_in_user
 
   def index
+    @match_pools = MatchPool.all.order(created_at: :asc)
+  end
+
+  def show
+    @match_pool = MatchPool.find(params[:id])
   end
 
   def new
