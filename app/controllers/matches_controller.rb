@@ -71,10 +71,6 @@ class MatchesController < ApplicationController
       @match = Match.find(params[:id])
     end
 
-    def set_match_pool
-      @match_pool = MatchPool.find(params[:match_pool_id])
-    end
-
     def set_teams
       @teams = Team.all.order(name: :asc)
     end

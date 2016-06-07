@@ -1,5 +1,6 @@
 class BetsController < ApplicationController
   before_action :logged_in_user
+  before_action :set_match_pool
 
   def index
   end

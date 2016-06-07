@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def set_match_pool
+    @match_pool = MatchPool.find(params[:match_pool_id])
+  end
 end
