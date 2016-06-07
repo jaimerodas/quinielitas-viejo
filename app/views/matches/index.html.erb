@@ -35,4 +35,6 @@
 
 <br>
 
+<% if @match_pool.accepts_matches? %>
 <%= link_to 'Nuevo Partido', new_match_pool_match_path(@match_pool) %>
+<% end %>
