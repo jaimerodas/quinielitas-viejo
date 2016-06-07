@@ -1,5 +1,6 @@
 class MatchPool < ApplicationRecord
   has_many :matches
+  has_many :bets
 
   def accepts_bets?
     ( self.bets_opened_at and self.bets_closed_at.nil? )

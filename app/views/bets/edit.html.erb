@@ -1,4 +1,4 @@
-<%= form_for :bets, url: bets_path, method: :patch do |b| %>
+<%= form_for :bets, url: match_pool_bets_path(@match_pool), method: :patch do |b| %>
 
   <% @bets.each do |b|  %>
 

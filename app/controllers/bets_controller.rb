@@ -9,22 +9,23 @@ class BetsController < ApplicationController
   end
 
   def create
-    if current_user.bets.empty?
-      @matches = Match.all.order(when: :asc)
+    if current_user.bets_for(@match_pool).empty?
+      @matches = @match_pool.matches.order(when: :asc)
 
       @matches.each do |m|
         Bet.create(
           user: current_user,
-          match: m
+          match: m,
+          match_pool: @match_pool
         )
       end
     end
 
-    redirect_to edit_bets_path
+    redirect_to edit_match_pool_bets_path(@match_pool)
   end
 
   def edit
-    @bets = current_user.bets
+    @bets = current_user.bets_for(@match_pool)
   end
 
   def update

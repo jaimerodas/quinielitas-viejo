@@ -29,4 +29,8 @@ class User < ApplicationRecord
     BCrypt::Password.new(remember_digest) == remember_token
   end
 
+  def bets_for match_pool
+    bets.where(match_pool: match_pool)
+  end
+
 end

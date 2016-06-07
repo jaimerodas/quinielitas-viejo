@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606174442) do
+ActiveRecord::Schema.define(version: 20160607134714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20160606174442) do
     t.integer  "home"
     t.integer  "away"
     t.integer  "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "match_pool_id"
     t.index ["match_id"], name: "index_bets_on_match_id", using: :btree
+    t.index ["match_pool_id"], name: "index_bets_on_match_pool_id", using: :btree
     t.index ["user_id", "match_id"], name: "index_bets_on_user_id_and_match_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
   end
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160606174442) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "bets", "match_pools"
   add_foreign_key "bets", "matches"
   add_foreign_key "bets", "users"
   add_foreign_key "matches", "match_pools"
