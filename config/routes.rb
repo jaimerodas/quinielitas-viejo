@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'advance', on: :member
     resources :matches, except: [:index, :show]
     resource :bets, except: [:destroy, :new, :show, :index]
-    resources :users, controller: 'bets', only: [:index, :show]
+    resources :users, controller: 'bets', only: [:show]
   end
 
   resources :teams
