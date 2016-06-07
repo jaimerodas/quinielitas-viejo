@@ -8,9 +8,17 @@
 
 <% if params[:match_pool_id] || @match_pool&.id %>
 <h1><%= link_to @match_pool.name, @match_pool %></h1>
+<div class="status"><%= @match_pool.status %></div>
 
 <nav>
-  <%= link_to 'Partidos', match_pool_matches_path(@match_pool) %>
-  <%= link_to 'Apuestas', match_pool_users_path(@match_pool) %>
+  <% if @match_pool.accepts_matches? %>
+    <%= link_to 'Partidos', match_pool_matches_path(@match_pool) %>
+  <% end %>
+
+  <% if @match_pool.accepts_bets? %>
+    <%= link_to 'Apuestas', match_pool_users_path(@match_pool) %>
+  <% end %>
+
+  <%  %>
 </nav>
 <% end %>
