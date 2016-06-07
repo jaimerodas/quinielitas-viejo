@@ -9,6 +9,7 @@ class Match < ApplicationRecord
   # No pueden jugar dos partidos al mismo tiempo
   validate :teams_have_no_matches_at_that_time, on: :create
   validate :teams_have_no_other_matches_at_that_time, on: :update
+  validate :match_pool_accepts_matches
 
 
   def date
@@ -39,5 +40,9 @@ class Match < ApplicationRecord
     matches = self.class.where('home_team_id = ? or away_team_id = ? ', self.send(team), self.send(team)).where(when: self.when)
     matches = matches.where('id != ?', id) if id
     errors.add(team, "ya tiene un juego en ese momento") if matches.size > 0
+  end
+
+  def match_pool_accepts_matches
+    errors.add(:base, 'la quiniela ya no acepta cambios en partidos') unless self.match_pool.accepts_matches?
   end
 end
