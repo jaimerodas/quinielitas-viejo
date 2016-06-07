@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def bets_for match_pool
-    bets.where(match_pool: match_pool)
+    bets.where(match_pool: match_pool).order(id: :asc)
   end
 
 end

@@ -30,6 +30,14 @@ class BetsController < ApplicationController
 
   def update
     @bets = Bet.update(params[:bets].keys, params[:bets].values)
-    render 'edit'
+    @bets.each do |b|
+      if b.errors.any?
+        puts 'error'
+        render 'edit'
+        return
+      end
+    end
+
+    redirect_to match_pool_path(@match_pool)
   end
 end
