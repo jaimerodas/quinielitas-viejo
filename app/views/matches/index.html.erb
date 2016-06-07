@@ -17,14 +17,17 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-        <td><%= match.when %></td>
+        <td>
+          <span><%= match.date %></span>
+          <span><%= match.time %></span>
+        </td>
         <td><%= match.home_team.name %></td>
         <td><%= match.away_team.name %></td>
         <td><%= match.home %></td>
         <td><%= match.away %></td>
-        <td><%= link_to 'Mostrar', match %></td>
-        <td><%= link_to 'Editar', edit_match_path(match) %></td>
-        <td><%= link_to 'Eliminar', match, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        <td><%= link_to 'Mostrar', match_pool_match_path(@match_pool, match) %></td>
+        <td><%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %></td>
+        <td><%= link_to 'Eliminar', match_pool_match_path(@match_pool, match), method: :delete, data: { confirm: 'Estás seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
