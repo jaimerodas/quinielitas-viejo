@@ -1,12 +1,13 @@
 class MatchPoolsController < ApplicationController
   before_action :logged_in_user
+  before_action :set_match_pool, on: [:show]
 
   def index
     @match_pools = MatchPool.all.order(created_at: :asc)
   end
 
   def show
-    @match_pool = MatchPool.find(params[:id])
+    @matches = @match_pool.matches.order(when: :asc)
   end
 
   def new
@@ -17,7 +18,7 @@ class MatchPoolsController < ApplicationController
     @match_pool = MatchPool.new(match_pool_params)
 
     if @match_pool.save
-      redirect_to match_pool_matches_path(@match_pool)
+      redirect_to match_pool_path(@match_pool)
     else
       render 'new'
     end
@@ -33,6 +34,10 @@ class MatchPoolsController < ApplicationController
   end
 
   private
+
+  def set_match_pool
+    @match_pool = MatchPool.find(params[:id])
+  end
 
   def match_pool_params
     params.require(:match_pool).permit(:name)
