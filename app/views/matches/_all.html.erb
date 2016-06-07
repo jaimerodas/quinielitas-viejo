@@ -7,8 +7,12 @@
     <th>R</th>
     <th>A</th>
     <th>P</th>
-    <th colspan="2"></th>
+    <th></th>
+    <% if @match_pool.accepts_matches? %>
+    <th></th>
+    <% end %>
   </tr>
+
   <tr>
     <td rowspan="2">
       <span><%= match.date %></span>
@@ -19,9 +23,16 @@
     <td><%= match.home %></td>
     <td></td>
     <td rowspan="2"></td>
-    <td rowspan="2"><%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %></td>
 
-    <td rowspan="2"><%= link_to 'Eliminar', match_pool_match_path(@match_pool, match), method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+    <% unless @match_pool.accepts_bets? %>
+    <td rowspan="2"><%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %></td>
+    <% end %>
+
+    <% if @match_pool.accepts_matches? %>
+    <td rowspan="2"><%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
+      method: :delete,
+      data: { confirm: 'Estás seguro?'} %></td>
+    <% end %>
   </tr>
 
   <tr>
@@ -29,7 +40,7 @@
     <td><%= match.away %></td>
     <td></td>
   </tr>
-  </table>
+</table>
 <% end %>
 
 <br>
