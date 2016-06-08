@@ -19,14 +19,14 @@
     <td class="team"><%= match.home_team.name %></td>
 
     <td><%= match.home %></td>
-    <td><%= match.user_home %></td>
-    <td rowspan="2"><%= match&.user_points %></td>
+    <td><%= match.user_home if match.respond_to? :user_home %></td>
+    <td rowspan="2"><%= match.user_points if match.respond_to? :user_points %></td>
   </tr>
 
   <tr>
     <td class="team"><%= match.away_team.name %></td>
     <td><%= match.away %></td>
-    <td><%= match&.user_away %></td>
+    <td><%= match.user_away if match.respond_to? :user_away %></td>
   </tr>
 </table>
 

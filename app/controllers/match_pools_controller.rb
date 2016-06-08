@@ -27,7 +27,6 @@ class MatchPoolsController < ApplicationController
       if @match_pool.bets_closed_at
         @scoreboard = Bet.select('sum(points) total, users.name, user_id').joins('JOIN users ON bets.user_id = users.id').where(match_pool: @match_pool).group('users.name, user_id').limit(10).order('total DESC')
       end
-
     else
       @matches = @match_pool.matches.order(when: :asc)
     end
