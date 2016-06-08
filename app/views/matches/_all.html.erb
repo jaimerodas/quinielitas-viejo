@@ -1,56 +1,57 @@
 <h2>Partidos</h2>
 
 <% @matches.each do |match| %>
-<table>
+<table class="match">
   <tr>
-    <th colspan="2"></th>
-    <th>R</th>
-    <th>A</th>
-    <th>P</th>
-    <% if current_user.admin? %>
+    <th width="50"></th>
     <th></th>
-    <% if @match_pool.accepts_matches? %>
-    <th></th>
-    <% end %>
-    <% end %>
+    <th width="30">R</th>
+    <th width="30">A</th>
+    <th width="30">P</th>
   </tr>
 
   <tr>
-    <td rowspan="2">
-      <span><%= match.date %></span>
-      <span><%= match.time %></span>
+    <td rowspan="2" class="when">
+      <div class="month"><%= match.month %></div>
+      <div class="date"><%= match.date %></div>
+      <div class="time"><%= match.time %></div>
     </td>
-    <td><%= match.home_team.name %></td>
+    <td class="team"><%= match.home_team.name %></td>
 
     <td><%= match.home %></td>
     <td><%= match.user_home %></td>
     <td rowspan="2"><%= match&.user_points %></td>
-
-    <% if current_user.admin? %>
-
-    <% unless @match_pool.accepts_bets? %>
-    <td rowspan="2"><%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %></td>
-    <% end %>
-
-    <% if @match_pool.accepts_matches? %>
-    <td rowspan="2"><%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
-      method: :delete,
-      data: { confirm: 'Estás seguro?'} %></td>
-    <% end %>
-
-    <% end %>
   </tr>
 
   <tr>
-    <td><%= match.away_team.name %></td>
+    <td class="team"><%= match.away_team.name %></td>
     <td><%= match.away %></td>
     <td><%= match&.user_away %></td>
   </tr>
 </table>
+
+<% if current_user.admin? %>
+
+<% unless @match_pool.accepts_bets? %>
+<%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
 <% end %>
 
-<br>
+<% if @match_pool.accepts_matches? %>
+<%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
+  method: :delete,
+  data: { confirm: 'Estás seguro?'} %>
+<% end %>
+
+<% end %>
+
+<% end %>
+
 
 <% if @match_pool.accepts_matches? && current_user.admin? %>
-<%= link_to 'Nuevo Partido', new_match_pool_match_path(@match_pool) %>
+
+<p class='divider'>
+  <span>ó</span>
+</p>
+
+<%= link_to 'Crea un Partido', new_match_pool_match_path(@match_pool), role: 'button' %>
 <% end %>

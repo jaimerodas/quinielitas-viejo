@@ -1,15 +1,20 @@
-<% if current_user.admin? %>
-<%= link_to @match_pool.next_action, advance_match_pool_path(@match_pool), data: { confirm: 'Estás seguro?' } %>
-<% end %>
-
-<% if @match_pool.accepts_bets? %>
-  <%= form_for :bets, url: match_pool_bets_path(@match_pool) do |f| %>
-    <%= f.button 'Editar Mis Apuestas' %>
+<article class="">
+  <% if current_user.admin? %>
+  <%= link_to @match_pool.next_action, advance_match_pool_path(@match_pool),
+    role: 'button',
+    data: { confirm: 'Estás seguro?' } %>
   <% end %>
-<% end %>
 
-<%= render 'scoreboard' if @scoreboard %>
+  <% if @match_pool.accepts_bets? %>
+    <%= form_for :bets, url: match_pool_bets_path(@match_pool) do |f| %>
+      <%= f.button 'Editar Mis Apuestas' %>
+    <% end %>
+  <% end %>
 
-<%= link_to 'Recalcular Puntajes', score_match_pool_path(@match_pool) if @match_pool.bets_closed_at  %>
+  <%= render 'scoreboard' if @scoreboard %>
 
-<%= render 'matches/all' %>
+  <%= link_to 'Recalcular Puntajes', score_match_pool_path(@match_pool) if @match_pool.bets_closed_at  %>
+
+  <%= render 'matches/all' %>
+
+</article>

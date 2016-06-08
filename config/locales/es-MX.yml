@@ -25,5 +25,7 @@ es-MX:
     label: *attributes
   time:
     formats:
+      month: '%b'
+      date: '%-d'
       short_date: '%b %-d'
-      short_time: '%l:%M %P'
+      short_time: '%H:%M'

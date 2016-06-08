@@ -16,9 +16,12 @@ class Match < ApplicationRecord
   validate :teams_have_no_other_matches_at_that_time, on: :update
   validate :match_pool_accepts_matches
 
+  def month
+    I18n.l self.when, format: :month
+  end
 
   def date
-    I18n.l self.when, format: :short_date
+    I18n.l self.when, format: :date
   end
 
   def time
