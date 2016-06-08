@@ -6,4 +6,6 @@
 </div>
 <% end %>
 
+<% if current_user.admin? %>
 <%= link_to 'Crear Quiniela', new_match_pool_path %>
+<% end %>

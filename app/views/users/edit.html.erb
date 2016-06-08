@@ -23,14 +23,18 @@
     <%= f.text_field :email %>
   </div>
 
+<% if current_user.admin? %>
   <div class="field">
     <%= f.check_box :admin %>
     <%= f.label :admin, 'Es administrador?' %>
   </div>
+<% end %>
 
   <div class="actions">
     <%= f.button %>
   </div>
 <% end %>
 
+<% if current_user.admin? %>
 <%= link_to 'Regresar', users_path %>
+<% end %>

@@ -7,9 +7,11 @@
     <th>R</th>
     <th>A</th>
     <th>P</th>
+    <% if current_user.admin? %>
     <th></th>
     <% if @match_pool.accepts_matches? %>
     <th></th>
+    <% end %>
     <% end %>
   </tr>
 
@@ -24,6 +26,8 @@
     <td><%= match.user_home %></td>
     <td rowspan="2"><%= match&.user_points %></td>
 
+    <% if current_user.admin? %>
+
     <% unless @match_pool.accepts_bets? %>
     <td rowspan="2"><%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %></td>
     <% end %>
@@ -32,6 +36,8 @@
     <td rowspan="2"><%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
       method: :delete,
       data: { confirm: 'Estás seguro?'} %></td>
+    <% end %>
+
     <% end %>
   </tr>
 
@@ -45,6 +51,6 @@
 
 <br>
 
-<% if @match_pool.accepts_matches? %>
+<% if @match_pool.accepts_matches? && current_user.admin? %>
 <%= link_to 'Nuevo Partido', new_match_pool_match_path(@match_pool) %>
 <% end %>

@@ -1,8 +1,10 @@
 <header>
   <nav class="main-links">
     <%= link_to 'Quinielitas', match_pools_path %>
+    <% if current_user.admin? %>
     <%= link_to 'Equipos', teams_path %>
     <%= link_to 'Usuarios', users_path %>
+    <% end %>
   </nav>
 
   <nav class="">
