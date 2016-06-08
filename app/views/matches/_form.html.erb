@@ -28,7 +28,7 @@
   </div>
 <% end %>
 
-<% unless @match_pool.accepts_bets? %>
+<% if @match_pool.bets_closed_at %>
   <h2>
     <%= match.home_team.name %>
     vs.
