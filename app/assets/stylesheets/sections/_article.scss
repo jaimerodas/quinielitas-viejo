@@ -1,0 +1,13 @@
+article {
+  padding: 1em;
+  text-align: center;
+  margin: 0 auto;
+
+  &.small {
+    max-width: 32em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+}
