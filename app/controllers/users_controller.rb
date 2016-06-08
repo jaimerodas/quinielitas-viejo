@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
-  end
-
   # GET /users/new
   def new
     redirect_to root_path and return if logged_in?
@@ -45,7 +40,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'El usuario fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

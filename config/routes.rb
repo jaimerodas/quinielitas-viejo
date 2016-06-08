@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   root 'match_pools#index'
 
-  resources :users, except: [:new, :create]
+  resources :users, except: [:new, :create, :show]
 
   resources :match_pools do
     get 'advance', on: :member
