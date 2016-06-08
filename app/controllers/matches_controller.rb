@@ -42,7 +42,12 @@ class MatchesController < ApplicationController
   def update
     respond_to do |format|
       if @match.update(match_params)
-        format.html { redirect_to @match_pool, notice: 'Match was successfully updated.' }
+        if @match_pool.bets_closed_at
+          redirect_to score_match_pool_path(@match_pool)
+          return
+        end
+
+        format.html { redirect_to @match_pool, notice: 'Partido Actualizado' }
         format.json { render :show, status: :ok, location: @match }
       else
         format.html { render :edit }
