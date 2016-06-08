@@ -1,5 +1,5 @@
 header {
-  display: flex;
+  text-align: center;
   background: darken($color-bg, 10%);
 
   font-size: 2em;
@@ -25,11 +25,18 @@ header {
     }
   }
 
-  nav {
-    display: flex;
-  }
+
 
   .main-links {
     flex: 1;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  header {
+    display: flex;
+    nav {
+      display: flex;
+    }
   }
 }
