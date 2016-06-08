@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#email'
   get 'logout', to: 'sessions#destroy'
+  get 'success', to: 'sessions#success'
   get 'token/:token', to: 'sessions#create', as: 'token'
 
   get 'register', to: 'users#new'

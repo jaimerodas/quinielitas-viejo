@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
 
     if user
       user.authenticate!
+      redirect_to success_path
     else
       flash.now[:danger] = "No existe esa cuenta"
       render 'new'
@@ -43,6 +44,9 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     flash[:success] = "Sesión cerrada exitosamente"
     redirect_to login_path
+  end
+
+  def success
   end
 
   private

@@ -34,8 +34,7 @@ class UsersController < ApplicationController
 
       if @user.save
         @user.authenticate!
-        flash[:success] = "Revisa tu correo para poder entrar al sistema."
-        redirect_to login_path
+        redirect_to success_path
       else
         render :new, layout: 'session'
       end
