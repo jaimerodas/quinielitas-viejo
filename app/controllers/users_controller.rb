@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @url = users_path
+    @url = user_path(@user)
     @url = profile_path unless params[:id]
   end
 
@@ -48,6 +48,9 @@ class UsersController < ApplicationController
         format.html { redirect_to redirect, notice: 'El usuario fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @user }
       else
+        @url = user_path(@user)
+        @url = profile_path unless params[:id]
+
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -76,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :admin)
     end
 end
