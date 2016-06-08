@@ -28,6 +28,16 @@ input {
   }
 }
 
+select {
+  display: block;
+  width: 100%;
+}
+
+.inline select {
+  display: inline-block;
+  width: auto;
+}
+
 input[type=checkbox],
 input[type=radio],
 input[type=button] {
