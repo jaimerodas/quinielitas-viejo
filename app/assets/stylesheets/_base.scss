@@ -3,7 +3,7 @@
 @import "vendor/normalize";
 
 body {
-  font: 16px/1.4 "Ideal Sans SSm A", "Ideal Sans SSm B", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font: 16px/1.4 $font-text;
   background: $color-bg;
   color: $color-fg;
 }
@@ -17,7 +17,7 @@ a {
 }
 
 h1, h2, h3 {
-  font-family: "Tungsten A", "Tungsten B", Arial, Helvetica, sans-serif;
+  font-family: $font-titles;
   font-weight: normal;
   line-height: 1;
   margin: 0;

@@ -1,4 +1,6 @@
-<h1>Crea una cuenta</h1>
+<h2>Crea una cuenta</h2>
+
+<%= link_to 'Regístrate con Facebook', '/auth/facebook', class: 'facebook' %>
 
 <%= form_for @user, url: register_path do |f| %>
   <% if @user.errors.any? %>
@@ -29,4 +31,3 @@
 <% end %>
 
 <%= link_to 'Ya tienes una cuenta?', login_path %>
-<%= link_to 'Ingresa con Facebook', '/auth/facebook' %>

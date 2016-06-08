@@ -1,19 +1,47 @@
 .field {
+  margin: 0.5em 0;
+}
 
+label {
+  font-size: 0.75em;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 input {
   display: block;
   width: 100%;
 
-  background: lighten($color-bg, 10%);
+  background-color: lighten($color-bg, 10%);
   border: none;
   padding: 0.5em;
 
   color: inherit;
 
+  border-radius: $border-radius;
+
+  transition: background-color 0.2s ease;
+
   &:focus {
     outline: none;
-    background: lighten($color-bg, 15%);
+    background-color: lighten($color-bg, 15%);
+  }
+}
+
+button {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.75em 0;
+  background-color: $color-button;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background-color: darken($color-button, 10%);
+  }
+
+  &:active {
+    color: #000;
   }
 }

@@ -5,7 +5,7 @@ h1 {
   font-size: 5em;
 
   padding-bottom: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
   border-bottom: 0.25rem solid darken($color-fg, 35%);
 }
 
@@ -27,7 +27,7 @@ main {
   background: $color-facebook;
   max-width: 16em;
   text-decoration: none;
-  border-radius: 0.25em;
+  border-radius: $border-radius;
   margin: 1em auto;
   transition: background-color 0.2s ease;
 

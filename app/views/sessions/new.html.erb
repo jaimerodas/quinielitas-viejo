@@ -1,3 +1,5 @@
+<%= link_to 'Ingresa con Facebook', '/auth/facebook', class: 'facebook' %>
+
 <%= form_for :session do |f| %>
   <div class="field">
     <%= f.label :email %>
@@ -6,6 +8,4 @@
 
   <%= f.button 'Acceder' %>
 <% end %>
-
-<%= link_to 'Ingresa con Facebook', '/auth/facebook', class: 'facebook' %>
 <%= link_to 'Crea una cuenta', register_path %>
