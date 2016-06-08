@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<% if @match_pool.accepts_matches? %>
   <div class="field">
     <%= f.label :home_team_id %>
     <%= f.collection_select :home_team_id, @teams, :id, :name %>
@@ -22,6 +23,19 @@
   </div>
 
   <div class="field">
+    <%= f.label :when %>
+    <%= f.datetime_select :when, minute_step: 15, start_hour: 11, end_hour: 13, discard_year: true %>
+  </div>
+<% end %>
+
+<% unless @match_pool.accepts_bets? %>
+  <h2>
+    <%= match.home_team.name %>
+    vs.
+    <%= match.away_team.name %>
+  </h2>
+
+  <div class="field">
     <%= f.label :home %>
     <%= f.number_field :home %>
   </div>
@@ -30,11 +44,7 @@
     <%= f.label :away %>
     <%= f.number_field :away %>
   </div>
-
-  <div class="field">
-    <%= f.label :when %>
-    <%= f.datetime_select :when, minute_step: 15, start_hour: 11, end_hour: 13, discard_year: true %>
-  </div>
+<% end %>
 
   <div class="actions">
     <%= f.button %>

@@ -3,6 +3,8 @@ class Match < ApplicationRecord
   belongs_to :away_team, class_name: 'Team'
   belongs_to :match_pool
 
+  has_many :bets
+
   # No puede haber un partido con el mismo equipo de local y visitante
   validate :has_different_teams
 
@@ -43,6 +45,6 @@ class Match < ApplicationRecord
   end
 
   def match_pool_accepts_matches
-    errors.add(:base, 'la quiniela ya no acepta cambios en partidos') unless self.match_pool.accepts_matches?
+    errors.add(:base, 'la quiniela ya no acepta cambios en partidos') unless (self.match_pool.accepts_matches? || self.match_pool.bets_closed_at)
   end
 end
