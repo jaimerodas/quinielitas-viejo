@@ -1,10 +1,15 @@
 @import "https://cloud.typography.com/671958/6159952/css/fonts.css";
+@import "variables";
 @import "vendor/normalize";
 
 body {
   font: 16px/1.4 "Ideal Sans SSm A", "Ideal Sans SSm B", "Helvetica Neue", Arial, Helvetica, sans-serif;
-  background: #134e34;
-  color: #81f1c2;
+  background: $color-bg;
+  color: $color-fg;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -13,5 +18,7 @@ a {
 
 h1, h2, h3 {
   font-family: "Tungsten A", "Tungsten B", Arial, Helvetica, sans-serif;
+  font-weight: normal;
   line-height: 1;
+  margin: 0;
 }

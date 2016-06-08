@@ -3,9 +3,14 @@
 
 h1 {
   font-size: 5em;
-  font-weight: normal;
-  line-height: 1;
-  margin: 0;
+
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 0.25rem solid darken($color-fg, 35%);
+}
+
+h2 {
+  font-size: 2em;
 }
 
 main {
@@ -19,7 +24,7 @@ main {
 .facebook {
   padding: 0.5em;
   display: block;
-  background: #34599c;
+  background: $color-facebook;
   max-width: 16em;
   text-decoration: none;
   border-radius: 0.25em;
@@ -27,6 +32,6 @@ main {
   transition: background-color 0.2s ease;
 
   &:hover, &:focus {
-    background-color: darken(#34599c, 5%);
+    background-color: darken($color-facebook, 5%);
   }
 }
