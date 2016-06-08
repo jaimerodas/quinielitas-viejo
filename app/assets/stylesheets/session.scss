@@ -1,1 +1,32 @@
 @import "base";
+@import "modules/forms";
+
+h1 {
+  font-size: 5em;
+  font-weight: normal;
+  line-height: 1;
+  margin: 0;
+}
+
+main {
+  width: 90%;
+  max-width: 25em;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center;
+}
+
+.facebook {
+  padding: 0.5em;
+  display: block;
+  background: #34599c;
+  max-width: 16em;
+  text-decoration: none;
+  border-radius: 0.25em;
+  margin: 1em auto;
+  transition: background-color 0.2s ease;
+
+  &:hover, &:focus {
+    background-color: darken(#34599c, 5%);
+  }
+}
