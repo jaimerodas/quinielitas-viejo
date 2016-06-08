@@ -1,0 +1,11 @@
+.alert {
+  margin: 0.25em 0;
+  padding: 0.5em;
+  background: lighten($color-bg, 5%);
+  border-radius: $border-radius;
+}
+
+.alert-danger {
+  background-color: $color-danger;
+  color: white;
+}
