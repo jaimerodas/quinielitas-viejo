@@ -13,10 +13,12 @@
   </nav>
 </header>
 
-<% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
+<section class="top">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
-<% if params[:match_pool_id] || @match_pool&.id %>
-<h1><%= link_to @match_pool.name, @match_pool %></h1>
-<% end %>
+  <% if params[:match_pool_id] || @match_pool&.id %>
+  <%= link_to @match_pool.name, @match_pool, class: 'main-pool' %>
+  <% end %>
+</section>

@@ -1,0 +1,16 @@
+.top {
+  width: 90%;
+  max-width: 48em;
+  margin: 0 auto 1em;
+  text-align: center;
+
+  .main-pool {
+    font-family: $font-titles;
+    font-size: 3em;
+    line-height: 1;
+    text-decoration: none;
+    margin: 1rem 0;
+
+    display: block;
+  }
+}
