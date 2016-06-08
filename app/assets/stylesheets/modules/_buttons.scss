@@ -1,9 +1,18 @@
 .btn {
   text-decoration: none;
+
 }
 
 .btn-big {
   font-family: $font-titles;
   font-size: 3em;
   line-height: 1;
+
+  display: block;
+  padding: 0.5rem;
+  margin: 1rem 0;
+
+  border-radius: $border-radius;
+
+  background-color: darken($color-bg, 5%);
 }

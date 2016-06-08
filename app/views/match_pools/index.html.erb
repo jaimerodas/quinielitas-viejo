@@ -1,11 +1,23 @@
-<h1>Quinielas</h1>
+<article class="small">
+  <h1>Quinielas</h1>
 
-<% @match_pools.each do |q| %>
-<div class="quiniela">
-  <h2><%= link_to q.name, q %></h2>
-</div>
-<% end %>
+  <% if @match_pools.size > 0 %>
 
-<% if current_user.admin? %>
-<%= link_to 'Crear Quiniela', new_match_pool_path %>
-<% end %>
+  <ul>
+    <% @match_pools.each do |q| %>
+    <li><%= link_to q.name, q, class: 'btn btn-big' %></li>
+    <% end %>
+  </ul>
+
+  <% if current_user.admin? %>
+  <p class="divider">
+    <span>ó</span>
+  </p>
+  <% end %>
+
+  <% end %>
+
+  <% if current_user.admin? %>
+  <%= link_to 'Crear Nueva Quiniela', new_match_pool_path, role: 'button' %>
+  <% end %>
+</article>
