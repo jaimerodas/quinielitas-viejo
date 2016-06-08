@@ -1,6 +1,6 @@
 class MatchPoolsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_match_pool, only: [:show, :advance]
+  before_action :set_match_pool, only: [:show, :advance, :score]
 
   def index
     @match_pools = MatchPool.all.order(created_at: :asc)
@@ -54,6 +54,20 @@ class MatchPoolsController < ApplicationController
       @match_pool.open_betting!
     else
       @match_pool.close_betting!
+    end
+
+    redirect_to @match_pool
+  end
+
+  def score
+    redirect_to @match_pool and return unless @match_pool.bets_closed_at
+
+    matches = @match_pool.matches.where('matches.home IS NOT NULL').where('matches.away IS NOT NULL')
+
+    matches.each do |match|
+      match.bets.each do |bet|
+        bet.score!(match.home, match.away)
+      end
     end
 
     redirect_to @match_pool
