@@ -1,28 +1,24 @@
-<h2>Crea una cuenta</h2>
-
 <%= link_to 'Regístrate con Facebook', '/auth/facebook', class: 'facebook' %>
 
+<p class="divider">
+  <span>ó</span>
+</p>
+
+<h2>Crea una cuenta</h2>
+
+
+
 <%= form_for @user, url: register_path do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <%= field_error @user.errors, :name %>
   </div>
 
   <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
+    <%= field_error @user.errors, :email %>
   </div>
 
   <div class="actions">
