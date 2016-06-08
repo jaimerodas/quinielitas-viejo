@@ -1,4 +1,8 @@
-<%= link_to 'Salir', logout_path %>
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<%= current_user.name %> | <%= link_to 'Salir', logout_path %>
 
 <nav>
   <%= link_to 'Quinielas', match_pools_path %>
