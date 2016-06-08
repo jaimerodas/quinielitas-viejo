@@ -1,26 +1,26 @@
-<p id="notice"><%= notice %></p>
+<article class="">
+  <h1>Equipos</h1>
 
-<h1>Equipos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= team.name %></td>
-        <td><%= link_to 'Editar', edit_team_path(team) %></td>
-        <td><%= link_to 'Eliminar', team, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        <th>Nombre</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= link_to 'Editar', edit_team_path(team) %></td>
+          <td><%= link_to 'Eliminar', team, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nuevo Equipo', new_team_path %>
+  <br>
+
+  <%= link_to 'Nuevo Equipo', new_team_path, role: 'button' %>
+</article>

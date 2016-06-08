@@ -1,11 +1,14 @@
-<h1>Crear Quiniela</h1>
+<article class="small">
+  <h1>Crear Quiniela</h1>
 
-<%= form_for @match_pool do |f| %>
+  <%= form_for @match_pool do |f| %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-  <%= f.button %>
-<% end %>
+    <%= f.button 'Crear Quiniela' %>
+  <% end %>
+
+</article>
