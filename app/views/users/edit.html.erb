@@ -1,40 +1,43 @@
-<h1>Editar Usuario</h1>
+<article class="small">
+  <h1>Editar Usuario</h1>
 
-<%= form_for @user, url: @url do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <%= form_for @user, url: @url do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= f.check_box :admin %>
+      <%= f.label :admin, 'Es administrador?' %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="actions">
+      <%= f.button %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+  <% if current_user.admin? %>
+  <%= link_to 'Regresar', users_path %>
+  <% end %>
 
-<% if current_user.admin? %>
-  <div class="field">
-    <%= f.check_box :admin %>
-    <%= f.label :admin, 'Es administrador?' %>
-  </div>
-<% end %>
-
-  <div class="actions">
-    <%= f.button %>
-  </div>
-<% end %>
-
-<% if current_user.admin? %>
-<%= link_to 'Regresar', users_path %>
-<% end %>
+</article>

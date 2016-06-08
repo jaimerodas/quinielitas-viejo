@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root 'match_pools#index'
 
   resources :users, except: [:new, :create, :show]
+  resources :teams, except: [:show]
 
   resources :match_pools do
     get 'advance', on: :member
@@ -27,7 +28,5 @@ Rails.application.routes.draw do
     resource :bets, except: [:destroy, :new, :show, :index]
     resources :users, controller: 'bets', only: [:show]
   end
-
-  resources :teams
 
 end
