@@ -1,0 +1,10 @@
+<h3><%= current_user.name %>: <%= current_user.score_of(@match_pool) %> puntos</h3>
+
+<table>
+  <% @scoreboard.each do |score| %>
+  <tr>
+    <td><%= score.name %></td>
+    <td><%= score.total %></td>
+  </tr>
+  <% end %>
+</table>

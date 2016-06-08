@@ -8,4 +8,8 @@
   <% end %>
 <% end %>
 
+<%= render 'scoreboard' if @scoreboard %>
+
+<%= link_to 'Recalcular Puntajes', score_match_pool_path(@match_pool) if @match_pool.bets_closed_at  %>
+
 <%= render 'matches/all' %>
