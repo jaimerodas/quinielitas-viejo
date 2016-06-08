@@ -1,33 +1,38 @@
-<%= form_for :bets, url: match_pool_bets_path(@match_pool), method: :patch do |b| %>
+<article class="small">
+  <h1>Editar Apuestas</h1>
+  <%= form_for :bets, url: match_pool_bets_path(@match_pool), method: :patch do |b| %>
 
-  <% @bets.each do |b|  %>
+    <% @bets.each do |b|  %>
 
-  <table>
-    <tr>
-      <th colspan="2"></th>
-      <th>A</th>
-    </tr>
+    <table class="match">
+      <tr>
+        <th width="60"></th>
+        <th></th>
+        <th width="60">A</th>
+      </tr>
 
-    <%= fields_for 'bets[]', b do |bet| %>
-    <tr>
-      <td rowspan="2">
-        <span><%= b.match.date %></span>
-        <span><%= b.match.time %></span>
-      </td>
-      <td><%= bet.label :home, b.match.home_team.name %></td>
+      <%= fields_for 'bets[]', b do |bet| %>
+      <tr>
+        <td rowspan="2" class="when">
+          <div><%= b.match.month %></div>
+          <div class="date"><%= b.match.date %></div>
+          <div><%= b.match.time %></div>
+        </td>
+        <td class="team"><%= b.match.home_team.name %></td>
 
-      <td><%= bet.number_field :home %></td>
-    </tr>
+        <td><%= bet.number_field :home %></td>
+      </tr>
 
-    <tr>
-      <td><%= bet.label :away, b.match.away_team.name %></td>
-      <td><%= bet.number_field :away %></td>
-      <td></td>
-    </tr>
+      <tr>
+        <td class="team"><%= b.match.away_team.name %></td>
+        <td><%= bet.number_field :away %></td>
+      </tr>
+      <% end %>
+    </table>
+
     <% end %>
-  </table>
 
+    <%= b.button %>
   <% end %>
 
-  <%= b.button %>
-<% end %>
+</article>
