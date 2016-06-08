@@ -1,14 +1,19 @@
+<header>
+  <nav class="main-links">
+    <%= link_to 'Quinielitas', match_pools_path %>
+    <%= link_to 'Equipos', teams_path %>
+    <%= link_to 'Usuarios', users_path %>
+  </nav>
+
+  <nav class="">
+    <div class="user-name"><%= current_user.name %></div>
+    <%= link_to 'Salir', logout_path %>
+  </nav>
+</header>
+
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
-
-<%= current_user.name %> | <%= link_to 'Salir', logout_path %>
-
-<nav>
-  <%= link_to 'Quinielas', match_pools_path %>
-  <%= link_to 'Equipos', teams_path %>
-  <%= link_to 'Usuarios', users_path %>
-</nav>
 
 <% if params[:match_pool_id] || @match_pool&.id %>
 <h1><%= link_to @match_pool.name, @match_pool %></h1>

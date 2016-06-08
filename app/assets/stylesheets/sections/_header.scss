@@ -1,0 +1,39 @@
+header {
+  display: flex;
+  background: darken($color-bg, 10%);
+
+  font-size: 2em;
+  font-family: $font-titles;
+  line-height: 1;
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+
+    color: lighten($color-bg, 20%);
+
+    transition: 0.2s ease all;
+
+    &:hover, &:focus {
+      background: darken($color-bg, 5%);
+      color: lighten($color-bg, 30%);
+    }
+
+    &:active {
+      color: #fff;
+    }
+  }
+
+  nav {
+    display: flex;
+  }
+
+  .user-name {
+    padding: 0.5rem;
+  }
+
+  .main-links {
+    flex: 1;
+  }
+}
