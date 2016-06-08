@@ -22,3 +22,22 @@ h1, h2, h3 {
   line-height: 1;
   margin: 0;
 }
+
+.divider {
+  width: 100%;
+  height: 0.8em;
+  border-bottom: 0.25rem solid darken($color-fg, 35%);
+  text-align: center;
+  margin: 0 0 1em;
+
+  span {
+    padding: 0 10px;
+    background: $color-bg;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
