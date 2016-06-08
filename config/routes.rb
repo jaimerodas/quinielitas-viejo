@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new'
   post 'register', to: 'users#create'
 
+  get 'profile', to: 'users#edit'
+  post 'profile', to: 'users#update'
+  put 'profile', to: 'users#update'
+  patch 'profile', to: 'users#update'
+
 
   get '/auth/:provider/callback', to: 'sessions#oauth'
 

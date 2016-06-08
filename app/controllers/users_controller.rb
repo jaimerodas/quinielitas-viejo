@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @url = users_path
+    @url = profile_path unless params[:id]
   end
 
   # POST /users
@@ -39,8 +41,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      redirect = users_path
+      redirect = root_path unless params[:id]
+
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'El usuario fue actualizado correctamente.' }
+        format.html { redirect_to redirect, notice: 'El usuario fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -62,7 +67,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if params[:id]
+        @user = User.find(params[:id])
+      else
+        @user = current_user
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
