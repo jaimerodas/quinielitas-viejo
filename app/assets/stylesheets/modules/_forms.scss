@@ -1,0 +1,19 @@
+.field {
+
+}
+
+input {
+  display: block;
+  width: 100%;
+
+  background: lighten($color-bg, 10%);
+  border: none;
+  padding: 0.5em;
+
+  color: inherit;
+
+  &:focus {
+    outline: none;
+    background: lighten($color-bg, 15%);
+  }
+}
