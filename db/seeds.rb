@@ -19,7 +19,7 @@ teams.each do |t|
   Team.create(name: t)
 end
 
-quiniela = MatchPool.create(name: 'Eurocopa 2016')
+quiniela = MatchPool.create(name: 'Euro 2016')
 
 quiniela.matches.create [
   {home_team_id: 1, away_team_id: 2, when: Time.new(2016, 06, 10, 11, 00, 00, '-05:00')},
