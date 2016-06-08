@@ -1,9 +1,12 @@
+.match-container {
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
 .match {
-  text-align: left;
+  text-align: center;
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
-  font-size: 0.875rem;
   vertical-align: middle;
 
   th {
@@ -18,7 +21,6 @@
   }
 
   .when {
-
     font-family: $font-text;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -34,5 +36,29 @@
 
   .team {
     padding: 0.5rem;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .matches {
+    display: flex;
+    flex-wrap: wrap;
+    .match-container {
+      width: 50%;
+      padding: 1em;
+    }
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .matches .match-container {
+    width: 33.3333333%
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .matches .match-container {
+    width: 25%
   }
 }

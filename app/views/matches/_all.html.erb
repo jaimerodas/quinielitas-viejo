@@ -1,50 +1,54 @@
 <h2>Partidos</h2>
 
-<% @matches.each do |match| %>
-<table class="match">
-  <tr>
-    <th width="50"></th>
-    <th></th>
-    <th width="30">R</th>
-    <th width="30">A</th>
-    <th width="30">P</th>
-  </tr>
+<section class="matches">
+  <% @matches.each do |match| %>
+    <div class="match-container">
+      <table class="match">
+        <tr>
+          <th width="50"></th>
+          <th></th>
+          <th width="30">R</th>
+          <th width="30">A</th>
+          <th width="30">P</th>
+        </tr>
 
-  <tr>
-    <td rowspan="2" class="when">
-      <div class="month"><%= match.month %></div>
-      <div class="date"><%= match.date %></div>
-      <div class="time"><%= match.time %></div>
-    </td>
-    <td class="team"><%= match.home_team.name %></td>
+        <tr>
+          <td rowspan="2" class="when">
+            <div class="month"><%= match.month %></div>
+            <div class="date"><%= match.date %></div>
+            <div class="time"><%= match.time %></div>
+          </td>
+          <td class="team"><%= match.home_team.name %></td>
 
-    <td><%= match.home %></td>
-    <td><%= match.user_home if match.respond_to? :user_home %></td>
-    <td rowspan="2"><%= match.user_points if match.respond_to? :user_points %></td>
-  </tr>
+          <td><%= match.home %></td>
+          <td><%= match.user_home if match.respond_to? :user_home %></td>
+          <td rowspan="2"><%= match.user_points if match.respond_to? :user_points %></td>
+        </tr>
 
-  <tr>
-    <td class="team"><%= match.away_team.name %></td>
-    <td><%= match.away %></td>
-    <td><%= match.user_away if match.respond_to? :user_away %></td>
-  </tr>
-</table>
+        <tr>
+          <td class="team"><%= match.away_team.name %></td>
+          <td><%= match.away %></td>
+          <td><%= match.user_away if match.respond_to? :user_away %></td>
+        </tr>
+      </table>
 
-<% if current_user.admin? %>
+      <% if current_user.admin? %>
 
-<% unless @match_pool.accepts_bets? %>
-<%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
-<% end %>
+        <% unless @match_pool.accepts_bets? %>
+        <%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
+        <% end %>
 
-<% if @match_pool.accepts_matches? %>
-<%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
-  method: :delete,
-  data: { confirm: 'Estás seguro?'} %>
-<% end %>
+        <% if @match_pool.accepts_matches? %>
+        <%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
+          method: :delete,
+          data: { confirm: 'Estás seguro?'} %>
+        <% end %>
 
-<% end %>
+      <% end %>
 
-<% end %>
+    </div>
+  <% end %>
+</section>
 
 
 <% if @match_pool.accepts_matches? && current_user.admin? %>
