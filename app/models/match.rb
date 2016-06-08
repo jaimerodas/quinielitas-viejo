@@ -3,6 +3,9 @@ class Match < ApplicationRecord
   belongs_to :away_team, class_name: 'Team'
   belongs_to :match_pool
 
+  # Para que funcione matches/_all.html.erb
+  attr_reader :user_home, :user_away, :user_points
+
   has_many :bets
 
   # No puede haber un partido con el mismo equipo de local y visitante
