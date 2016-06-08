@@ -47,15 +47,6 @@ class MatchPoolsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   def advance
     if @match_pool.accepts_matches?
       @match_pool.open_betting!

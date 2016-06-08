@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :create, :show]
   resources :teams, except: [:show]
 
-  resources :match_pools do
+  resources :match_pools, except: [:edit, :destroy, :update] do
     get 'advance', on: :member
     get 'score', on: :member
     resources :matches, except: [:index, :show]
