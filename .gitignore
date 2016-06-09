@@ -17,10 +17,13 @@
 .byebug_history
 
 # We don't want our real keys out there
-mail.yml
 
-database.yml
+config/mail.yml
 
-nginx.conf
+config/nginx.conf
 
 config/secrets.yml
+
+config/facebook.yml
+
+config/database.yml
