@@ -28,4 +28,4 @@ config/facebook.yml
 
 config/database.yml
 
-app/assets/icons
+icons

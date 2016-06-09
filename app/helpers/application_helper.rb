@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def icon name, options={}
-    file = File.read(Rails.root.join('app', 'assets', 'icons', "#{name}.svg"))
+    file = File.read(Rails.root.join('icons', "#{name}.svg"))
     doc = Nokogiri::HTML::DocumentFragment.parse file
 
     classes = options[:class] || 'icon'
