@@ -1,13 +1,14 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
+server 'quinielitas.co', port: 22, roles: [:web, :app, :db], primary: true
+
 set :application, 'Quinielitas'
 set :repo_url, 'git@github.com:jaimerodas/Quinielitas.git'
-set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
-
+set :rbenv_ruby, File.read('.ruby-version').strip
 set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
@@ -27,7 +28,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :scm, :git
 
 # Default value for :format is :airbrussh.
-# set :format, :airbrussh
+set :format, :pretty
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
