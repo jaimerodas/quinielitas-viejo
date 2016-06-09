@@ -1,12 +1,32 @@
 .btn {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.75em auto;
+  background-color: $color-button;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  max-width: 32em;
+
+  color: #000;
+  display: block;
   text-decoration: none;
 
+  &:hover, &:focus {
+    background-color: darken($color-button, 10%);
+  }
+
+  &:active {
+    color: #000;
+  }
 }
 
 .btn-big {
   font-family: $font-titles;
   font-size: 3em;
   line-height: 1;
+  text-decoration: none;
 
   display: block;
   padding: 0.5rem;
@@ -19,5 +39,18 @@
 
   &:hover, &:focus {
     background-color: lighten($color-bg, 10%);
+  }
+}
+
+.btn-danger {
+  background-color: $color-danger;
+  color: #fff;
+
+  &:hover, &:focus {
+    background-color: darken($color-danger, 10%);
+  }
+
+  &:active {
+    color: #fff;
   }
 }

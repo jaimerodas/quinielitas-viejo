@@ -1,3 +1,8 @@
 @import "base";
 @import "modules";
 @import "sections";
+
+.icon {
+  fill: $color-fg;
+  fill: transparentize($color-fg, 0.7);
+}

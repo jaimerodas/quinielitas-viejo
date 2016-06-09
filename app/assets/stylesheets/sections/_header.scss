@@ -10,6 +10,7 @@ header {
     text-decoration: none;
     display: block;
     padding: 0.5rem 1rem;
+    position: relative;
 
     color: lighten($color-bg, 20%);
 
@@ -22,6 +23,12 @@ header {
 
     &:active {
       color: #fff;
+    }
+
+    svg {
+      display: inline-block;
+      width: 0.75em;
+      height: 0.75em;
     }
   }
 

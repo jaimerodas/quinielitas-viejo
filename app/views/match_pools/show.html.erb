@@ -11,7 +11,7 @@
 
   <% if current_user.admin? %>
   <%= link_to @match_pool.next_action, advance_match_pool_path(@match_pool),
-    role: 'button',
+    class: 'btn btn-danger',
     data: { confirm: 'Estás seguro?' } %>
   <% end %>
 

@@ -6,4 +6,16 @@ module ApplicationHelper
     end
   end
 
+  def icon name, options={}
+    file = File.read(Rails.root.join('app', 'assets', 'icons', "#{name}.svg"))
+    doc = Nokogiri::HTML::DocumentFragment.parse file
+
+    classes = options[:class] || 'icon'
+
+    svg = doc.at_css 'svg'
+    svg['class'] = classes
+
+    doc.to_html.html_safe
+  end
+
 end

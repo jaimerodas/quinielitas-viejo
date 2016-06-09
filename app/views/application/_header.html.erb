@@ -9,7 +9,10 @@
 
   <nav class="">
     <%= link_to current_user.name, profile_path %>
-    <%= link_to 'Salir', logout_path %>
+    <%= link_to logout_path do %>
+      Salir
+      <%= icon 'signout' %>
+    <% end %>
   </nav>
 </header>
 
