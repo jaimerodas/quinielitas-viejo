@@ -22,6 +22,40 @@
   }
 }
 
+.btn-edit {
+  position: relative;
+  display: inline-block;
+  background-color: $color-button;
+  color: #000;
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+  padding-left: 2em;
+  margin: 0.5em;
+  height: 2em;
+  border-radius: $border-radius;
+
+  p {
+    display: inline-block;
+
+    font-size: 0.75em;
+    text-transform: uppercase;
+
+    line-height: 2;
+    margin: 0;
+  }
+
+  svg {
+    display: inline-block;
+    position: absolute;
+    height: 1.5em;
+    width: 1.5em;
+    fill: #000;
+
+    left: 0.25em;
+    top: 0.25em;
+  }
+}
+
 .btn-big {
   font-family: $font-titles;
   font-size: 3em;
@@ -45,6 +79,10 @@
 .btn-danger {
   background-color: $color-danger;
   color: #fff;
+
+  svg {
+    fill: #fff;
+  }
 
   &:hover, &:focus {
     background-color: darken($color-danger, 10%);

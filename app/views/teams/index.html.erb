@@ -13,9 +13,20 @@
       <% @teams.each do |team| %>
         <tr>
           <td><%= team.name %></td>
-          <td><%= link_to 'Editar', edit_team_path(team) %></td>
-          <td><%= link_to 'Eliminar', team, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+          <td>
+            <%= link_to edit_team_path(team), class: 'btn-edit' do %>
+              <%= icon 'pencil', size: 24 %>
+              <p>Editar</p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to team, method: :delete, class: 'btn-edit btn-danger' do %>
+              <%= icon 'delete', size: 24 %>
+              <p>Borrar</p>
+            <% end %>
+          </td>
         </tr>
+
       <% end %>
     </tbody>
   </table>
