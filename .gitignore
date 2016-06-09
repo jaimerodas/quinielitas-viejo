@@ -18,3 +18,9 @@
 
 # We don't want our real keys out there
 mail.yml
+
+database.yml
+
+nginx.conf
+
+config/secrets.yml
