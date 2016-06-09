@@ -13,5 +13,6 @@ module Quinielitas
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'America/Mexico_City'
     config.mail = config_for(:mail)
+    config.facebook = config_for(:facebook)
   end
 end

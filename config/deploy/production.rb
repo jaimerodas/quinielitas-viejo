@@ -7,13 +7,6 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-server 'quinielitas.co',
-  user: 'deploy',
-  roles: [:web, :app, :db],
-  puma_threads: [4,16],
-  puma_workers: 0,
-  primary: true
-
 # role-based syntax
 # ==================
 
