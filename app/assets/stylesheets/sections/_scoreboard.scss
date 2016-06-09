@@ -1,0 +1,17 @@
+.scoreboard-container {
+  width: 90%;
+  max-width: 24em;
+  margin: 0 auto 1em;
+}
+
+.scoreboard {
+  text-align: center;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  vertical-align: middle;
+
+  td {
+    border: 2px solid lighten($color-bg, 5%);
+  }
+}

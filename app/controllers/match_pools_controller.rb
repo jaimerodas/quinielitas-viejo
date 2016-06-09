@@ -9,6 +9,14 @@ class MatchPoolsController < ApplicationController
   def show
     @scoreboard = false
 
+    if @match_pool.bets_closed_at
+      @scoreboard = Bet.select('
+        RANK() over(ORDER BY SUM(points) DESC) place,
+        SUM(points) total,
+        users.name, user_id
+      ').joins('JOIN users ON bets.user_id = users.id').where(match_pool: @match_pool).group('users.name, user_id').limit(10).order('total DESC')
+    end
+
     if current_user.bets_for(@match_pool).count > 0
       @matches = Match.select('
         matches.id,
@@ -22,11 +30,7 @@ class MatchPoolsController < ApplicationController
         bets.points user_points
       ').joins('JOIN bets ON bets.match_id = matches.id')
       .where(match_pool: @match_pool).where('bets.user_id = ?', current_user.id)
-      .order(when: :asc)
-
-      if @match_pool.bets_closed_at
-        @scoreboard = Bet.select('sum(points) total, users.name, user_id').joins('JOIN users ON bets.user_id = users.id').where(match_pool: @match_pool).group('users.name, user_id').limit(10).order('total DESC')
-      end
+      .order(when: :asc, id: :asc)
     else
       @matches = @match_pool.matches.order(when: :asc)
     end
