@@ -11,9 +11,12 @@ module ApplicationHelper
     doc = Nokogiri::HTML::DocumentFragment.parse file
 
     classes = options[:class] || 'icon'
+    size = options[:size] || 32
 
     svg = doc.at_css 'svg'
     svg['class'] = classes
+    svg['width'] = size
+    svg['height'] = size
 
     doc.to_html.html_safe
   end
