@@ -34,8 +34,12 @@ class SessionsController < ApplicationController
     redirect_to root_path and return if logged_in?
 
     user = User.find_by(auth_hash)
-    puts "#{user.inspect}"
-    user = User.create(auth_create_hash) unless user
+
+    if user
+      user.update(auth_update_hash)
+    else
+      user = User.create(auth_create_hash)
+    end
 
     init_session_for user
   end
@@ -59,8 +63,15 @@ class SessionsController < ApplicationController
 
   def auth_hash
     return {
+      email: request.env['omniauth.auth'].info.email,
+    }
+  end
+
+  def auth_update_hash
+    {
       uid: request.env['omniauth.auth'].uid,
-      provider: request.env['omniauth.auth'].provider
+      provider: request.env['omniauth.auth'].provider,
+      auth_token: request.env['omniauth.auth'].credentials.token
     }
   end
 
