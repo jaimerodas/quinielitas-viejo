@@ -1,12 +1,18 @@
 <section class="scoreboard-container">
-  <h3><%= current_user.name %>: <%= current_user.score_of(@match_pool) %> puntos</h3>
+  <h2>Posiciones</h2>
+  <table class="scoreboard">
+    <tr>
+      <td class="name"><%= current_user.name %></td>
+      <td width="80"><%= current_user.score_of(@match_pool) %></td>
+    </tr>
+  </table>
 
   <table class="scoreboard">
     <% @scoreboard.each do |score| %>
     <tr>
-      <td><%= score.place %></td>
-      <td><%= score.name %></td>
-      <td><%= score.total %></td>
+      <td width="50"><%= score.place %></td>
+      <td class="name"><%= score.name %></td>
+      <td width="80"><%= score.total %></td>
     </tr>
     <% end %>
   </table>

@@ -5,13 +5,30 @@
 }
 
 .scoreboard {
+  font-size: 0.875em;
   text-align: center;
+  line-height: 1;
+
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
   vertical-align: middle;
+  margin: 0.5em 0;
+
+  th {
+    font-size: .75rem;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+  }
 
   td {
     border: 2px solid lighten($color-bg, 5%);
+    padding: 0.5rem;
+  }
+
+  .name {
+    text-align: left;
   }
 }
