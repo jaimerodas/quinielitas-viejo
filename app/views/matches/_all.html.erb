@@ -33,11 +33,11 @@
 
       <% if current_user.admin? %>
 
-        <% unless @match_pool.accepts_bets? %>
+        <% if !@match_pool.bets_opened_at or match.when < Time.now %>
         <%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
         <% end %>
 
-        <% if @match_pool.accepts_matches? %>
+        <% unless @match_pool.bets_opened_at %>
         <%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
           method: :delete,
           data: { confirm: 'Estás seguro?'} %>
@@ -50,7 +50,7 @@
 </section>
 
 
-<% if @match_pool.accepts_matches? && current_user.admin? %>
+<% if !@match_pool.bets_opened_at && current_user.admin? %>
 
 <p class='divider'>
   <span>ó</span>

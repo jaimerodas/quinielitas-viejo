@@ -1,6 +1,6 @@
 <article class="">
   <h1><%= @match_pool.name %></h1>
-  <% if @match_pool.accepts_bets? %>
+  <% if @match_pool.bets_opened_at %>
     <%= form_for :bets, url: match_pool_bets_path(@match_pool) do |f| %>
       <%= f.button 'Editar Mis Apuestas' %>
     <% end %>
@@ -10,8 +10,8 @@
 
   <%= render 'matches/all' %>
 
-  <% if current_user.admin? %>
-  <%= link_to @match_pool.next_action, advance_match_pool_path(@match_pool),
+  <% if current_user.admin? && !@match_pool.bets_opened_at %>
+  <%= link_to 'Abrir Apuestas', advance_match_pool_path(@match_pool),
     class: 'btn btn-danger',
     data: { confirm: 'Estás seguro?' } %>
   <% end %>

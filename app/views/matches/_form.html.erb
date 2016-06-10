@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-<% if @match_pool.accepts_matches? %>
+<% unless @match_pool.bets_opened_at %>
   <div class="field">
     <%= f.label :home_team_id %>
     <%= f.collection_select :home_team_id, @teams, :id, :name %>
@@ -28,7 +28,7 @@
   </div>
 <% end %>
 
-<% if @match_pool.bets_closed_at %>
+<% if match.when < Time.now %>
   <h2>
     <%= match.home_team.name %>
     vs.

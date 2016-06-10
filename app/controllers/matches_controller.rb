@@ -77,7 +77,7 @@ class MatchesController < ApplicationController
     end
 
     def only_if_open
-      unless @match_pool.accepts_matches?
+      if @match_pool.bets_opened_at
         flash[:danger] = "Acción no permitida"
         redirect_to match_pool_path(@match_pool)
         return

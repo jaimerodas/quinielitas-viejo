@@ -25,7 +25,7 @@ class BetsController < ApplicationController
   end
 
   def edit
-    @bets = current_user.bets_for(@match_pool)
+    @bets = current_user.bets_available_for(@match_pool)
   end
 
   def update

@@ -26,12 +26,7 @@ class MatchPoolsController < ApplicationController
   end
 
   def advance
-    if @match_pool.accepts_matches?
-      @match_pool.open_betting!
-    else
-      @match_pool.close_betting!
-    end
-
+    @match_pool.open_betting! unless @match_pool.bets_opened_at
     redirect_to @match_pool
   end
 

@@ -42,6 +42,10 @@ class User < ApplicationRecord
     bets.where(match_pool: match_pool).order(id: :asc)
   end
 
+  def bets_available_for match_pool
+    bets_for(match_pool).joins('JOIN matches ON bets.match_id = matches.id').where('matches.when > ?', Time.now)
+  end
+
   def score_of match_pool
     scores = bets.select('sum(points) total, user_id').where(match_pool: match_pool).group('user_id').order('total DESC')
     return scores.first.total if scores.first
