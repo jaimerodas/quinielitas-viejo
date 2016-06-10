@@ -1,37 +1,23 @@
 <article class="">
   <h1>Equipos</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+  <ul class="list">
+    <% @teams.each do |team| %>
+    <li class="item">
+      <div class="main name"><%= team.name %></div>
 
-    <tbody>
-      <% @teams.each do |team| %>
-        <tr>
-          <td><%= team.name %></td>
-          <td>
-            <%= link_to edit_team_path(team), class: 'btn-edit' do %>
-              <%= icon 'pencil', size: 24 %>
-              <p>Editar</p>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to team, method: :delete, class: 'btn-edit btn-danger' do %>
-              <%= icon 'delete', size: 24 %>
-              <p>Borrar</p>
-            <% end %>
-          </td>
-        </tr>
+      <div class="actions">
+        <%= link_to edit_team_path(team), class: 'btn-med' do %>
+          <%= icon 'pencil' %><span>Editar</span>
+        <% end %>
 
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
+        <%= link_to team, method: :delete, class: 'btn-med btn-danger' do %>
+          <%= icon 'delete' %><span>Borrar</span>
+        <% end %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
 
   <%= link_to 'Nuevo Equipo', new_team_path, role: 'button' %>
 </article>
