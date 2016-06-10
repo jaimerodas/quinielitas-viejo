@@ -25,6 +25,10 @@ class Match < ApplicationRecord
     I18n.l self.when, format: :short_time
   end
 
+  def score!
+    self.bets.each {|b| b.score! self.home, self.away } unless self.home.nil? or self.away.nil?
+  end
+
   private
 
   def has_different_teams

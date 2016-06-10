@@ -14,16 +14,23 @@ class Bet < ApplicationRecord
     greater_than_or_equal_to: 0
   }, if: '!away.nil?'
 
-  # validate :before_the_game, unless: :user_is_admin
+  validate :at_correct_time
 
   def score! match_home, match_away
-    self.points = 0
-    self.save and return if self.home.nil? or self.away.nil?
+    return if match_home.nil? or match_away.nil?
+
+    if self.home.nil? || self.away.nil?
+      self.update_attribute(:points, 0)
+      return
+    end
 
     points = 0
 
     points += 1 if self.home == match_home
     points += 1 if self.away == match_away
+
+    puts "Vamos a Calcular Scores"
+    puts "#{self.home}:#{self.away} vs #{match_home}:#{match_away}"
 
     match_diff = match_home - match_away
     user_diff = self.home - self.away
@@ -35,8 +42,7 @@ class Bet < ApplicationRecord
       (match_diff == 0 && user_diff == 0)
     )
 
-    self.points = points
-    self.save
+    self.update_attribute(:points, points)
   end
 
   def when
@@ -57,7 +63,7 @@ class Bet < ApplicationRecord
 
   private
 
-  def before_the_game
-    errors.add(:base, 'el partido ya empezó!') if (!self.match_pool.bets_opened_at || self.match.when < Time.now)
+  def at_correct_time
+    errors.add(:base, 'ya no se aceptan cambios!') if (!self.match_pool.bets_opened_at || Time.now > self.match.when)
   end
 end
