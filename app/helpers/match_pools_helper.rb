@@ -1,8 +1,8 @@
 module MatchPoolsHelper
 
-  def matches_with_bets_for user
+  def matches_with_bets_for user, future=true
     if user.bets_for(@match_pool).count > 0
-      return Match.select('
+      matches = Match.select('
         matches.id,
         matches.home_team_id,
         matches.away_team_id,
@@ -15,6 +15,10 @@ module MatchPoolsHelper
       ').joins('JOIN bets ON bets.match_id = matches.id')
       .where(match_pool: @match_pool).where('bets.user_id = ?', user.id)
       .order(when: :asc, id: :asc)
+
+      matches = matches.where('matches.when < ?', Time.now) unless future
+
+      return matches
     else
       return @match_pool.matches.order(when: :asc)
     end

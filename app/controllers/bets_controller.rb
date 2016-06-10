@@ -5,7 +5,7 @@ class BetsController < ApplicationController
   def show
     @user = User.find(params[:id])
     get_scoreboard
-    @matches = matches_with_bets_for(@user)
+    @matches = matches_with_bets_for(@user, false)
   end
 
   def create
