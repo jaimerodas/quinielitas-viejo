@@ -6,7 +6,7 @@
     <% end %>
   <% end %>
 
-  <%= render 'scoreboard' if @scoreboard %>
+  <%= render 'scoreboard', user: current_user if @scoreboard %>
 
   <%= render 'matches/all' %>
 

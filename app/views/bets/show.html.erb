@@ -1,2 +1,8 @@
-<h1>Bets#show</h1>
-<p>Find me in app/views/bets/show.html.erb</p>
+<article class="">
+  <h1><%= @match_pool.name %></h1>
+  <h3>Apuestas de <%= @user.name %></h3>
+
+  <%= render 'match_pools/scoreboard', user: @user if @scoreboard %>
+  <%= render 'matches/all' %>
+
+</article>
