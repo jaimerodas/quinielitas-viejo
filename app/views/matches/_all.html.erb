@@ -17,7 +17,7 @@
             <div class="date"><%= match.date %></div>
             <div class="time"><%= match.time %></div>
           </td>
-          <td class="team"><%= match.home_team.name %></td>
+          <td class="team"><%= match.home_team_name %></td>
 
           <td><%= match.home %></td>
           <td><%= match.user_home if match.respond_to? :user_home %></td>
@@ -25,7 +25,7 @@
         </tr>
 
         <tr>
-          <td class="team"><%= match.away_team.name %></td>
+          <td class="team"><%= match.away_team_name %></td>
           <td><%= match.away %></td>
           <td><%= match.user_away if match.respond_to? :user_away %></td>
         </tr>

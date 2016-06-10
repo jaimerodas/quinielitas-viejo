@@ -5,7 +5,9 @@ module MatchPoolsHelper
       matches = Match.select('
         matches.id,
         matches.home_team_id,
+        home.name home_team_name,
         matches.away_team_id,
+        away.name away_team_name,
         matches.when,
         matches.home,
         matches.away,
@@ -13,6 +15,8 @@ module MatchPoolsHelper
         bets.away user_away,
         bets.points user_points
       ').joins('JOIN bets ON bets.match_id = matches.id')
+      .joins('JOIN teams home ON matches.home_team_id = home.id')
+      .joins('JOIN teams away ON matches.away_team_id = away.id')
       .where(match_pool: @match_pool).where('bets.user_id = ?', user.id)
       .order(when: :asc, id: :asc)
 
@@ -20,7 +24,19 @@ module MatchPoolsHelper
 
       return matches
     else
-      return @match_pool.matches.order(when: :asc)
+      return Match.select('
+        matches.id,
+        matches.home_team_id,
+        home.name home_team_name,
+        matches.away_team_id,
+        away.name away_team_name,
+        matches.when,
+        matches.home,
+        matches.away
+      ').joins('JOIN teams home ON matches.home_team_id = home.id')
+      .joins('JOIN teams away ON matches.away_team_id = away.id')
+      .where(match_pool: @match_pool)
+      .order(when: :asc, id: :asc)
     end
   end
 
