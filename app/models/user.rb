@@ -43,7 +43,19 @@ class User < ApplicationRecord
   end
 
   def bets_available_for match_pool
-    bets_for(match_pool).joins('JOIN matches ON bets.match_id = matches.id').where('matches.when > ?', Time.now)
+    bets_for(match_pool).select('
+      bets.id,
+      bets.user_id,
+      bets.match_id,
+      bets.home,
+      bets.away,
+      matches.when starts_at,
+      home.name home_team_name,
+      away.name away_team_name
+    ').joins('JOIN matches ON bets.match_id = matches.id')
+      .joins('JOIN teams home ON matches.home_team_id = home.id')
+      .joins('JOIN teams away ON matches.away_team_id = away.id')
+      .where('matches.when > ?', Time.now)
   end
 
   def score_of match_pool

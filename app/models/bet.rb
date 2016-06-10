@@ -39,6 +39,22 @@ class Bet < ApplicationRecord
     self.save
   end
 
+  def when
+    self.starts_at || self.match.when
+  end
+
+  def month
+    I18n.l self.when, format: :month
+  end
+
+  def date
+    I18n.l self.when, format: :date
+  end
+
+  def time
+    I18n.l self.when, format: :short_time
+  end
+
   private
 
   def before_the_game

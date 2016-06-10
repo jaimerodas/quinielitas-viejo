@@ -14,17 +14,17 @@
       <%= fields_for 'bets[]', b do |bet| %>
       <tr>
         <td rowspan="2" class="when">
-          <div><%= b.match.month %></div>
-          <div class="date"><%= b.match.date %></div>
-          <div><%= b.match.time %></div>
+          <div><%= b.month %></div>
+          <div class="date"><%= b.date %></div>
+          <div><%= b.time %></div>
         </td>
-        <td class="team"><%= b.match.home_team.name %></td>
+        <td class="team"><%= b.home_team_name %></td>
 
         <td><%= bet.number_field :home, pattern: '\d*' %></td>
       </tr>
 
       <tr>
-        <td class="team"><%= b.match.away_team.name %></td>
+        <td class="team"><%= b.away_team_name %></td>
         <td><%= bet.number_field :away, pattern: '\d*' %></td>
       </tr>
       <% end %>
