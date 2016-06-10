@@ -4,7 +4,7 @@
 
     <% @bets.each do |b|  %>
 
-    <table class="match">
+    <table class="match <%= 'error' if b.errors.any? %>">
       <tr>
         <th width="60"></th>
         <th></th>

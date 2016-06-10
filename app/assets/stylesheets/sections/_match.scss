@@ -20,6 +20,10 @@
     border: 2px solid lighten($color-bg, 5%);
   }
 
+  &.error td {
+    border-color: $color-danger;
+  }
+
   .when {
     font-family: $font-text;
     font-size: 0.75rem;
