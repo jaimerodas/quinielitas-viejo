@@ -1,7 +1,8 @@
-$(function() {
-  $('.main-links').addClass('off');
+document.addEventListener('turbolinks:load', function() {
+  document.querySelector('.main-links').className += ' off';
+});
 
-  $('#menu-button').click(function(){
-    $('.main-links').toggleClass('off');
-  });
+$(document).on('click', '.menu-button', function() {
+  console.log('click!');
+  $('.main-links').toggleClass('off');
 });
