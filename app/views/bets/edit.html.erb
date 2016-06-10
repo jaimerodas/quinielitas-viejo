@@ -20,12 +20,12 @@
         </td>
         <td class="team"><%= b.match.home_team.name %></td>
 
-        <td><%= bet.number_field :home %></td>
+        <td><%= bet.number_field :home, pattern: '\d*' %></td>
       </tr>
 
       <tr>
         <td class="team"><%= b.match.away_team.name %></td>
-        <td><%= bet.number_field :away %></td>
+        <td><%= bet.number_field :away, pattern: '\d*' %></td>
       </tr>
       <% end %>
     </table>

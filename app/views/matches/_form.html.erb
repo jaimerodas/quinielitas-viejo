@@ -37,12 +37,12 @@
 
   <div class="field">
     <%= f.label :home %>
-    <%= f.number_field :home %>
+    <%= f.number_field :home, pattern: '\d*' %>
   </div>
 
   <div class="field">
     <%= f.label :away %>
-    <%= f.number_field :away %>
+    <%= f.number_field :away, pattern: '\d*' %>
   </div>
 <% end %>
 
