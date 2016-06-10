@@ -7,11 +7,18 @@
     <% end %>
   </nav>
 
-  <nav class="">
-    <%= link_to current_user.name, profile_path %>
+  <nav class="secondary-links">
+    <%= button_tag(type: 'button', id: 'menu-button') do %>
+      <%= icon 'menu' %>
+      <span>Menú</span>
+    <% end %>
+    <%= link_to profile_path do %>
+      <%= icon 'user' %>
+      <span><%= current_user.name %></span>
+    <% end %>
     <%= link_to logout_path do %>
-      Salir
       <%= icon 'signout' %>
+      <span>Salir</span>
     <% end %>
   </nav>
 </header>

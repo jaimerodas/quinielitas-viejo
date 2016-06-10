@@ -1,49 +1,107 @@
 header {
+  display: flex;
+  flex-direction: column;
+
   text-align: center;
-  background: darken($color-bg, 10%);
+  background: darken($color-bg, 5%);
 
   font-size: 2em;
   font-family: $font-titles;
   line-height: 1;
 
-  a {
+  a, button {
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 0.5rem 1rem;
+    margin: 0;
     position: relative;
 
+    background: inherit;
     color: lighten($color-bg, 20%);
 
     transition: 0.2s ease all;
 
     &:hover, &:focus {
-      background: darken($color-bg, 5%);
+      background: darken($color-bg, 8%);
       color: lighten($color-bg, 30%);
     }
 
     &:active {
       color: #fff;
+
+      svg {
+        fill: white;
+      }
     }
 
     svg {
-      display: inline-block;
-      width: 0.75em;
-      height: 0.75em;
+      display: block;
+      margin: 0 auto;
+      width: 1.5em;
+      height: 1.5em;
     }
   }
 
+  .secondary-links {
+    order: -1;
+    display: flex;
 
+    a, button {
+      flex: 1;
+      padding: 0.25rem;
+    }
+
+    span {
+      display: none;
+    }
+  }
 
   .main-links {
-    flex: 1;
+    flex: 1 0 auto;
+    &.off {
+      display: none;
+    }
   }
 }
 
 @media screen and (min-width: 30em) {
   header {
-    display: flex;
-    nav {
-      display: flex;
+    flex-direction: row;
+
+    a, button {
+      svg {
+        width: 1em;
+        height: 1em;
+      }
     }
+
+    .main-links {
+      display: flex;
+      &.off {
+        display: flex;
+      }
+    }
+
+    .secondary-links {
+      order: 1;
+
+      a {
+        flex: 1;
+        padding: 0.5rem 1rem;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 48em) {
+  header .secondary-links span {
+    display: block;
   }
 }
