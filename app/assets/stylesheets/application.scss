@@ -6,3 +6,11 @@
   fill: $color-fg;
   fill: transparentize($color-fg, 0.7);
 }
+
+ol {
+  text-align: left;
+
+  li {
+    margin: 0 0 0.75em;
+  }
+}

@@ -7,6 +7,10 @@ article {
     max-width: 32em;
   }
 
+  &.med {
+    max-width: 48em;
+  }
+
   h1 {
     font-size: 2.5em;
     color: lighten($color-fg, 20%);

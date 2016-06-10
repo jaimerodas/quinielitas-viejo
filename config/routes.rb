@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   put 'profile', to: 'users#update'
   patch 'profile', to: 'users#update'
 
+  get 'rules', to: 'static_pages#rules'
 
   get '/auth/:provider/callback', to: 'sessions#oauth'
 

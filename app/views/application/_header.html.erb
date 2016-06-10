@@ -1,15 +1,22 @@
 <header>
   <nav class="main-links">
     <%= link_to 'Quinielitas', match_pools_path %>
+
+    <%= link_to rules_path do %>
+      <%= icon 'book' %>
+      <span>Reglas</span>
+    <% end %>
+
     <% if current_user.admin? %>
-    <%= link_to teams_path do %>
-      <%= icon 't-shirt' %>
-      <span>Equipos</span>
-    <% end %>
-    <%= link_to users_path do %>
-      <%= icon 'friends' %>
-      <span>Usuarios</span>
-    <% end %>
+      <%= link_to teams_path do %>
+        <%= icon 't-shirt' %>
+        <span>Equipos</span>
+      <% end %>
+
+      <%= link_to users_path do %>
+        <%= icon 'friends' %>
+        <span>Usuarios</span>
+      <% end %>
     <% end %>
   </nav>
 
