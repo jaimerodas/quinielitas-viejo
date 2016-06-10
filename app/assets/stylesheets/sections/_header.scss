@@ -37,12 +37,15 @@ header {
       }
     }
 
-    svg {
+    span {
       display: block;
-      margin: 0 auto;
-      width: 1.5em;
-      height: 1.5em;
+      margin-left: 0.5rem;
     }
+  }
+
+  svg {
+    width: 1em;
+    height: 1em;
   }
 
   .secondary-links {
@@ -56,6 +59,13 @@ header {
 
     span {
       display: none;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+      width: 1.5em;
+      height: 1.5em;
     }
   }
 
@@ -71,17 +81,13 @@ header {
   header {
     flex-direction: row;
 
-    a, button {
-      svg {
-        width: 1em;
-        height: 1em;
-      }
-    }
-
     .main-links {
       display: flex;
       &.off {
         display: flex;
+      }
+      span {
+        display: none;
       }
     }
 
@@ -89,12 +95,18 @@ header {
       order: 1;
 
       a {
-        flex: 1;
+        flex: initial;
+        flex-shrink: 0;
         padding: 0.5rem 1rem;
       }
 
       button {
         display: none;
+      }
+
+      svg {
+        width: 1em;
+        height: 1em;
       }
     }
   }

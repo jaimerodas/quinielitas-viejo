@@ -2,8 +2,14 @@
   <nav class="main-links">
     <%= link_to 'Quinielitas', match_pools_path %>
     <% if current_user.admin? %>
-    <%= link_to 'Equipos', teams_path %>
-    <%= link_to 'Usuarios', users_path %>
+    <%= link_to teams_path do %>
+      <%= icon 't-shirt' %>
+      <span>Equipos</span>
+    <% end %>
+    <%= link_to users_path do %>
+      <%= icon 'friends' %>
+      <span>Usuarios</span>
+    <% end %>
     <% end %>
   </nav>
 
