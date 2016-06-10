@@ -41,7 +41,7 @@ module MatchPoolsHelper
   end
 
   def get_scoreboard
-    if @match_pool.bets_closed_at
+    if @match_pool.bets_opened_at
       @scoreboard = Bet.select('
         RANK() over(ORDER BY SUM(points) DESC) place,
         SUM(points) total,
