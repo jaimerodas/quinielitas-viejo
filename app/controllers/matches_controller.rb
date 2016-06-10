@@ -42,7 +42,7 @@ class MatchesController < ApplicationController
   def update
     respond_to do |format|
       if @match.update(match_params)
-        if @match_pool.bets_closed_at
+        if @match_pool.bets_opened_at && @match.when < Time.now
           redirect_to score_match_pool_path(@match_pool)
           return
         end

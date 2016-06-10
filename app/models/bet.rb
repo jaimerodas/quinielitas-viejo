@@ -14,7 +14,7 @@ class Bet < ApplicationRecord
     greater_than_or_equal_to: 0
   }, if: '!away.nil?'
 
-  validate :before_the_game
+  # validate :before_the_game, unless: :user_is_admin
 
   def score! match_home, match_away
     self.points = 0
@@ -58,6 +58,6 @@ class Bet < ApplicationRecord
   private
 
   def before_the_game
-    errors.add(:base, 'el partido ya empezó!') if (!self.match_pool.bets_opened_at ||  self.match.when < Time.now)
+    errors.add(:base, 'el partido ya empezó!') if (!self.match_pool.bets_opened_at || self.match.when < Time.now)
   end
 end

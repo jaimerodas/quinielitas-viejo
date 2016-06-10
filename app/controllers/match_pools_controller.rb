@@ -31,7 +31,7 @@ class MatchPoolsController < ApplicationController
   end
 
   def score
-    redirect_to @match_pool and return unless @match_pool.bets_closed_at
+    redirect_to @match_pool and return unless @match_pool.bets_opened_at
 
     matches = @match_pool.matches.where('matches.home IS NOT NULL').where('matches.away IS NOT NULL')
 
