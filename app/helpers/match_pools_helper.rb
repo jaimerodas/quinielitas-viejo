@@ -42,11 +42,29 @@ module MatchPoolsHelper
 
   def get_scoreboard
     if @match_pool.bets_opened_at
-      @scoreboard = Bet.select('
-        RANK() over(ORDER BY SUM(points) DESC) place,
-        SUM(points) total,
-        users.name, user_id
-      ').joins('JOIN users ON bets.user_id = users.id').where(match_pool: @match_pool).group('users.name, user_id').limit(10).order('total DESC')
+      scores = Bet.select('SUM(points) total, users.name, user_id')
+        .joins('JOIN users ON bets.user_id = users.id')
+        .where(match_pool: @match_pool)
+        .group('users.name, user_id')
+        .order('total DESC, user_id ASC')
+
+      @scoreboard = []
+
+      position = 1
+      points = 0
+      scores.each do |score|
+        player = {
+          position: position,
+          name: score.name,
+          points: score.total
+        }
+
+        player[:position] = nil if points == score.total
+        position += 1 unless points == score.total
+        points = score.total
+
+        @scoreboard << player
+      end
     end
   end
 
