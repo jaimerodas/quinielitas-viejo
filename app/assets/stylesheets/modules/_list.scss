@@ -9,10 +9,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 1em 0;
 
   text-align: center;
   line-height: 1;
-  margin-bottom: 0.25em;
 
   .main {
     padding: 0.5rem;
@@ -40,29 +40,30 @@
       margin: 0.35rem 0 0.2rem;
       border-radius: $border-radius;
 
-      background: darken($color-bg, 5%);
+      background: $color-bg;
     }
     svg {
       display: block;
       margin: 0;
       padding: 0;
-      fill: $color-bg;
+      fill: lighten($color-bg, 5%);
     }
 
     .on {
-      background: $color-button;
+      background: darken($color-bg, 5%);
       svg {
-        fill: black;
+        fill: $color-fg;
       }
     }
   }
 }
 
 
-@media screen and (min-width: 38em) {
+@media screen and (min-width: 40em) {
   .item {
     flex-direction: row;
     text-align: left;
-    background: darken($color-bg, 3%);
+    background: lighten($color-bg, 5%);
+    margin: 0 0 0.25em;
   }
 }
