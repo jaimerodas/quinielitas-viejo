@@ -20,7 +20,10 @@
           <%= icon 'pencil' %><span>Editar</span>
         <% end %>
 
-        <%= link_to user, method: :delete, class: 'btn-med btn-danger' do %>
+        <%= link_to user,
+          method: :delete,
+          class: 'btn-med btn-danger',
+          data: {confirm: 'Estás seguro?'} do %>
           <%= icon 'delete' %><span>Borrar</span>
         <% end %>
       </div>
