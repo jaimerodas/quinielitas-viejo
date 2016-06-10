@@ -28,7 +28,7 @@
   </div>
 <% end %>
 
-<% if match.when < Time.now %>
+<% if !new && match.when < Time.now %>
   <h2>
     <%= match.home_team.name %>
     vs.

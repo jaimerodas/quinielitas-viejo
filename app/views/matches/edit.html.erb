@@ -1,7 +1,7 @@
 <article class="small">
   <h1>Editar Partido</h1>
 
-  <%= render 'form', match: @match %>
+  <%= render 'form', match: @match, new: false %>
 
   <%= link_to 'Regresar', match_pool_path(@match_pool) %>
 </article>
