@@ -22,37 +22,40 @@
   }
 }
 
-.btn-edit {
-  position: relative;
+.btn-med {
   display: inline-block;
-  background-color: $color-button;
+  background-color: $color-warning;
   color: #000;
   text-decoration: none;
-  padding: 0.25em 0.5em;
-  padding-left: 2em;
-  margin: 0.5em;
-  height: 2em;
+  height: 2.25rem;
+  padding: 0.15rem;
+  margin: 0.35rem 0 0.2rem;
+  width: 6.5em;
   border-radius: $border-radius;
 
-  p {
+  &:hover, &:focus {
+    background-color: darken($color-warning, 10%);
+  }
+
+  span {
     display: inline-block;
+    position: relative;
+    top: 0.6em;
 
     font-size: 0.75em;
     text-transform: uppercase;
 
-    line-height: 2;
+    line-height: 1;
     margin: 0;
+    padding: 0;
   }
 
   svg {
-    display: inline-block;
-    position: absolute;
-    height: 1.5em;
-    width: 1.5em;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
     fill: #000;
-
-    left: 0.25em;
-    top: 0.25em;
   }
 }
 
