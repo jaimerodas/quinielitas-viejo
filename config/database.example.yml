@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+development:
+  <<: *default
+  database: quinielitas_development
+
+test:
+  <<: *default
+  database: quinielitas_test
+
+production:
+  <<: *default
+  host: localhost
+  database: quinielitas
+  username: quinielitas
+  password: PASSWORD

@@ -1,0 +1,6 @@
+development:
+  app_id: DEV_APP_ID
+  secret: DEV_APP_SECRET
+production:
+  app_id: APP_ID
+  secret: APP_SECRET
