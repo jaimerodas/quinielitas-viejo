@@ -46,7 +46,7 @@ module MatchPoolsHelper
         .joins('JOIN users ON bets.user_id = users.id')
         .where(match_pool: @match_pool)
         .group('users.name, user_id')
-        .order('total DESC, user_id ASC')
+        .order('total DESC NULLS LAST, user_id ASC')
 
       @scoreboard = []
 
