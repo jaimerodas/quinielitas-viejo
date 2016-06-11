@@ -28,7 +28,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :scm, :git
 
 # Default value for :format is :airbrussh.
-set :format, :pretty
+# set :format, :pretty
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
