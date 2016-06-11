@@ -1,5 +1,6 @@
 <article class="">
-  <h1><%= @match_pool.name %></h1>
+  <%= render 'top' %>
+
   <% if @match_pool.bets_opened_at %>
     <%= form_for :bets, url: match_pool_bets_path(@match_pool) do |f| %>
       <%= f.button 'Editar Mis Apuestas' %>
