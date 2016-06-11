@@ -43,6 +43,31 @@
   }
 }
 
+.match-details {
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+
+  border: none;
+  border-collapse: collapse;
+
+  &.big {
+    font-size: 2em;
+  }
+
+  th {
+    font-size: 0.75em;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  td {
+    font-family: $font-titles;
+    font-size: 2em;
+    line-height: 1;
+  }
+}
+
 @media screen and (min-width: 48em) {
   .matches {
     display: flex;
