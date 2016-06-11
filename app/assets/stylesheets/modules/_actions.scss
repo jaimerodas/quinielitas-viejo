@@ -1,0 +1,20 @@
+.actions {
+  display: flex;
+
+  a {
+    flex: 1;
+    margin: 0.25rem 0.125rem;
+  }
+
+  & :first-child {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    margin-left: 0;
+  }
+
+  & :last-child {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    margin-right: 0;
+  }
+}

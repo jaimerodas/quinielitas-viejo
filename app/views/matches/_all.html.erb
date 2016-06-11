@@ -32,17 +32,27 @@
       </table>
 
       <div class="actions">
-        <%= link_to 'Detalles', match_pool_match_path(@match_pool, match) %>
+        <%= link_to match_pool_match_path(@match_pool, match), class: 'btn-med' do %>
+          <%= icon 'view' %>
+          <span>Detalles</span>
+        <% end %>
         <% if current_user.admin? %>
 
           <% if !@match_pool.bets_opened_at or match.when < Time.now %>
-          <%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
+          <%= link_to edit_match_pool_match_path(@match_pool, match), class: 'btn-med btn-warning' do %>
+            <%= icon 'pencil' %>
+            <span>Editar</span>
+          <% end %>
           <% end %>
 
           <% unless @match_pool.bets_opened_at %>
-          <%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
-            method: :delete,
-            data: { confirm: 'Estás seguro?'} %>
+            <%= link_to match_pool_match_path(@match_pool, match),
+              method: :delete,
+              data: { confirm: 'Estás seguro?'},
+              class: 'btn-med btn-danger' do %>
+              <%= icon 'delete' %>
+              <span>Delete</span>
+            <% end %>
           <% end %>
 
         <% end %>

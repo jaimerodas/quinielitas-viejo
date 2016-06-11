@@ -23,24 +23,25 @@
 }
 
 .btn-med {
-  display: inline-block;
-  background-color: $color-warning;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $color-button;
+  transition: 0.2s ease all;
+
   color: #000;
   text-decoration: none;
   height: 2.25rem;
-  padding: 0.15rem;
+  padding: 0.15rem 0.5rem 0.15rem 0.15rem;
   margin: 0.35rem 0 0.2rem;
-  width: 6.5em;
-  border-radius: $border-radius;
 
   &:hover, &:focus {
-    background-color: darken($color-warning, 10%);
+    background-color: darken($color-button, 10%);
   }
 
   span {
     display: inline-block;
-    position: relative;
-    top: 0.6em;
 
     font-size: 0.75em;
     text-transform: uppercase;
@@ -54,6 +55,7 @@
     display: block;
     float: left;
     margin: 0;
+    margin-right: 0.25rem;
     padding: 0;
     fill: #000;
   }
@@ -76,6 +78,14 @@
 
   &:hover, &:focus {
     background-color: lighten($color-bg, 10%);
+  }
+}
+
+.btn-warning {
+  background-color: $color-warning;
+
+  &:hover, &:focus {
+    background-color: darken($color-warning, 10%);
   }
 }
 
