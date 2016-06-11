@@ -46,7 +46,7 @@ svg, y el método `icon` en el `application_helper` los inserta en el html.
 
 ### Capistrano
 Porque es bonito. Revisa la configuración en [deploy.rb][local-6]. Sí lo usas, todo se deployea con
-`cap production deploy`
+`cap production deploy`.
 
 ### Nginx y LetsEncrypt
 Como el mundo es más bonito con encripción, y ya no cuesta un peso sacar certificados SSL, puedes
@@ -61,9 +61,9 @@ Además, así puedes usar mi `nginx.conf` sin ningún problema.
 [5]: https://letsencrypt.org
 [6]: https://gist.github.com/jaimerodas/1fa36c2d6926915f4f25f30cdfa071b5
 
-[local-1]: /blob/master/config/database.example.yml
-[local-2]: /blob/master/config/facebook.example.yml
-[local-3]: /blob/master/config/mail.example.yml
-[local-4]: /blob/master/config/secrets.example.yml
-[local-5]: /blob/master/config/nginx.example.conf
-[local-5]: /blob/master/config/deploy.rb
+[local-1]: /config/database.example.yml
+[local-2]: /config/facebook.example.yml
+[local-3]: /config/mail.example.yml
+[local-4]: /config/secrets.example.yml
+[local-5]: /config/nginx.example.conf
+[local-5]: /config/deploy.rb
