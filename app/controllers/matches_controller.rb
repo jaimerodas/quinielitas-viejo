@@ -32,7 +32,9 @@ class MatchesController < ApplicationController
       .where('matches.id = ?', params[:id]).first
 
     if Time.now > @match.when
-      @bets = @match.bets.order(updated_at: :asc)
+      @bets = @match.bets.order(updated_at: :desc)
+    else
+      @bets = @match.bets.where('user_id = ?', current_user.id)
     end
   end
 
