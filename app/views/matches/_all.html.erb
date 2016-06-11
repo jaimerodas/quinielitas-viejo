@@ -31,19 +31,22 @@
         </tr>
       </table>
 
-      <% if current_user.admin? %>
+      <div class="actions">
+        <%= link_to 'Detalles', match_pool_match_path(@match_pool, match) %>
+        <% if current_user.admin? %>
 
-        <% if !@match_pool.bets_opened_at or match.when < Time.now %>
-        <%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
+          <% if !@match_pool.bets_opened_at or match.when < Time.now %>
+          <%= link_to 'Editar', edit_match_pool_match_path(@match_pool, match) %>
+          <% end %>
+
+          <% unless @match_pool.bets_opened_at %>
+          <%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
+            method: :delete,
+            data: { confirm: 'Estás seguro?'} %>
+          <% end %>
+
         <% end %>
-
-        <% unless @match_pool.bets_opened_at %>
-        <%= link_to 'Eliminar', match_pool_match_path(@match_pool, match),
-          method: :delete,
-          data: { confirm: 'Estás seguro?'} %>
-        <% end %>
-
-      <% end %>
+      </div>
 
     </div>
   <% end %>

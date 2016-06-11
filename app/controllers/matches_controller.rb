@@ -17,6 +17,25 @@ class MatchesController < ApplicationController
     @match = Match.new
   end
 
+  def show
+    @match = Match.select('
+      matches.id,
+      matches.home,
+      matches.away,
+      matches.when,
+      matches.home_team_id,
+      matches.away_team_id,
+      home.name home_team_name,
+      away.name away_team_name')
+      .joins('JOIN teams home ON matches.home_team_id = home.id')
+      .joins('JOIN teams away ON matches.away_team_id = away.id')
+      .where('matches.id = ?', params[:id]).first
+
+    if Time.now > @match.when
+      @bets = @match.bets.order(updated_at: :asc)
+    end
+  end
+
   # GET /matches/1/edit
   def edit
   end

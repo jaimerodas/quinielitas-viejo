@@ -29,6 +29,28 @@ class Match < ApplicationRecord
     self.bets.each {|b| b.score! self.home, self.away } unless self.home.nil? or self.away.nil?
   end
 
+  def number_of_bets
+    self.bets.where('home is not null').where('away is not null').count
+  end
+
+  def win_proportion
+    win = self.bets.where('bets.home > bets.away').count
+    return ((win.to_f / self.number_of_bets) * 100).round unless self.number_of_bets == 0
+    return 0
+  end
+
+  def lose_proportion
+    lose = self.bets.where('bets.home < bets.away').count
+    return ((lose.to_f / self.number_of_bets) * 100).round unless self.number_of_bets == 0
+    return 0
+  end
+
+  def draw_proportion
+    draw = self.bets.where('bets.home = bets.away').count
+    return ((draw.to_f / self.number_of_bets) * 100).round unless self.number_of_bets == 0
+    return 0
+  end
+
   private
 
   def has_different_teams
