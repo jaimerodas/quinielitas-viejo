@@ -56,7 +56,7 @@ module MatchPoolsHelper
         player = {
           position: position,
           name: score.name,
-          points: score.total
+          points: score.total || 0
         }
 
         player[:position] = nil if points == score.total
