@@ -29,9 +29,6 @@ class Bet < ApplicationRecord
     points += 1 if self.home == match_home
     points += 1 if self.away == match_away
 
-    puts "Vamos a Calcular Scores"
-    puts "#{self.home}:#{self.away} vs #{match_home}:#{match_away}"
-
     match_diff = match_home - match_away
     user_diff = self.home - self.away
 
