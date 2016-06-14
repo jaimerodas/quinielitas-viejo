@@ -1,6 +1,8 @@
 class MatchPool < ApplicationRecord
   has_many :matches
   has_many :bets
+  has_many :participants
+  has_many :users, through: :participants
 
   def open_betting!
     unless self.bets_opened_at

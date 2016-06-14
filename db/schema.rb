@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608131313) do
+ActiveRecord::Schema.define(version: 20160613235351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 20160608131313) do
     t.index ["match_pool_id"], name: "index_matches_on_match_pool_id", using: :btree
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "match_pool_id"
+    t.integer "points",        default: 0
+    t.boolean "paid",          default: false
+    t.index ["match_pool_id"], name: "index_participants_on_match_pool_id", using: :btree
+    t.index ["user_id", "match_pool_id"], name: "index_participants_on_user_id_and_match_pool_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_participants_on_user_id", using: :btree
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -81,4 +91,6 @@ ActiveRecord::Schema.define(version: 20160608131313) do
   add_foreign_key "matches", "match_pools"
   add_foreign_key "matches", "teams", column: "away_team_id"
   add_foreign_key "matches", "teams", column: "home_team_id"
+  add_foreign_key "participants", "match_pools"
+  add_foreign_key "participants", "users"
 end

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :bets
+  has_many :participants
+  has_many :match_pools, through: :participants
   attr_accessor :remember_token
 
   before_save { self.email = email.downcase }

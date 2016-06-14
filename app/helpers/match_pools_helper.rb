@@ -42,11 +42,9 @@ module MatchPoolsHelper
 
   def get_scoreboard
     if @match_pool.bets_opened_at
-      scores = Bet.select('SUM(points) total, users.name, user_id')
-        .joins('JOIN users ON bets.user_id = users.id')
-        .where(match_pool: @match_pool)
-        .group('users.name, user_id')
-        .order('total DESC NULLS LAST, user_id ASC')
+      scores = @match_pool.participants.select('participants.points, participants.paid, users.name, participants.user_id')
+        .joins('JOIN users ON participants.user_id = users.id')
+        .order('points DESC NULLS LAST, user_id ASC')
 
       @scoreboard = []
 
@@ -56,12 +54,12 @@ module MatchPoolsHelper
         player = {
           position: position,
           name: score.name,
-          points: score.total || 0
+          points: score.points || 0
         }
 
-        player[:position] = nil if points == score.total
-        position += 1 unless points == score.total
-        points = score.total
+        player[:position] = nil if points == score.points
+        position += 1 unless points == score.points
+        points = score.points
 
         @scoreboard << player
       end
