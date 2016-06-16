@@ -21,8 +21,6 @@ class Bet < ApplicationRecord
 
     if self.home.nil? || self.away.nil?
       self.update_attribute(:points, 0)
-      participant = Participant.find_by(user_id: self.user_id, match_pool_id: self.match_pool_id)
-      participant.recalculate_points
       return
     end
 
@@ -42,6 +40,8 @@ class Bet < ApplicationRecord
     )
 
     self.update_attribute(:points, points)
+    participant = Participant.find_by(user_id: self.user_id, match_pool_id: self.match_pool_id)
+    participant.recalculate_points if participant
   end
 
   def when
