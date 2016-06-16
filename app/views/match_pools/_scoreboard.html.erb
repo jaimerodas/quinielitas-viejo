@@ -13,6 +13,13 @@
       <td width="50"><%= score[:position] %></td>
       <td class="name"><%= score[:name] %></td>
       <td width="80"><%= score[:points] %></td>
+      <td class="actions <%= 'on' if score[:paid] %>">
+        <% if current_user.admin? %>
+          <%= link_to(icon('cash'), pay_match_pool_participant_path(@match_pool, score[:id])) %>
+        <% else %>
+          <%= icon 'cash' %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </table>

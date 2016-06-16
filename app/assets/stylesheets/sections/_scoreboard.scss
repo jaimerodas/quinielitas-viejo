@@ -15,17 +15,25 @@
   vertical-align: middle;
   margin: 0.5em 0;
 
-  th {
-    font-size: .75rem;
-    font-weight: normal;
-    text-align: center;
-    text-transform: uppercase;
-    line-height: 1;
-  }
-
   td {
     border: 2px solid lighten($color-bg, 5%);
     padding: 0.5rem;
+
+    &.actions {
+      display: table-cell;
+      padding: 0;
+      border: none;
+      width: 2.5rem;
+
+      svg {
+        display: block;
+        margin-left: 0.5rem;
+      }
+
+      &.on svg {
+        fill: white;
+      }
+    }
   }
 
   .name {

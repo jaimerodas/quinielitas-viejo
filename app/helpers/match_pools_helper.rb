@@ -42,7 +42,7 @@ module MatchPoolsHelper
 
   def get_scoreboard
     if @match_pool.bets_opened_at
-      scores = @match_pool.participants.select('participants.points, participants.paid, users.name, participants.user_id')
+      scores = @match_pool.participants.select('participants.points, participants.paid, users.name, participants.user_id, participants.id')
         .joins('JOIN users ON participants.user_id = users.id')
         .order('points DESC NULLS LAST, user_id ASC')
 
@@ -52,9 +52,11 @@ module MatchPoolsHelper
       points = 0
       scores.each do |score|
         player = {
+          id: score.id,
           position: position,
           name: score.name,
-          points: score.points || 0
+          points: score.points || 0,
+          paid: score.paid
         }
 
         player[:position] = nil if points == score.points

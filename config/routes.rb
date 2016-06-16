@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     resources :matches, except: [:index]
     resource :bets, except: [:destroy, :new, :show, :index]
     resources :users, controller: 'bets', only: [:show]
+    resources :participants, only: [] do
+      get 'pay', on: :member
+    end
   end
 
 end
