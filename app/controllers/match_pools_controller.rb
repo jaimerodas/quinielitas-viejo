@@ -9,7 +9,6 @@ class MatchPoolsController < ApplicationController
   def show
     get_scoreboard
     @matches = matches_with_bets_for(current_user)
-    @match_pool.participants.first.recalculate_points
   end
 
   def new
