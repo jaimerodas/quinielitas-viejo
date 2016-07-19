@@ -66,4 +66,4 @@ Además, así puedes usar mi `nginx.conf` sin ningún problema.
 [local-3]: /config/mail.example.yml
 [local-4]: /config/secrets.example.yml
 [local-5]: /config/nginx.example.conf
-[local-5]: /config/deploy.rb
+[local-6]: /config/deploy.rb
